@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "sszj-box": "/components/sszj/sszj"
+  },
+  "navigationBarTitleText":"选择司机"
+}

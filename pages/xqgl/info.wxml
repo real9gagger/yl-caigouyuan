@@ -1,0 +1,94 @@
+<!-- 需求详情 -->
+<view class="pd-rem5 bg-f0">
+	<view class="group-panel-box">
+		<view class="fw-b">货物信息</view>
+		<view class="fx-hc">
+			<text class="fx-g1">品名</text>
+			<text class="pd-l-1rem">{{xqInfos.goodsCategory}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">等级</text>
+			<text class="pd-l-1rem">{{xqInfos.goodsName}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">规格</text>
+			<text class="pd-l-1rem">{{xqInfos.goodsDesc}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">数量</text>
+			<text class="pd-l-1rem">{{xqInfos.goodsNums}}</text>
+			<text class="tc-66 pd-l-rem5">方</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">单价</text>
+			<text class="pd-l-1rem">{{xqInfos.unitPrice}}</text>
+			<text class="tc-66 pd-l-rem5">元</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">总价</text>
+			<text class="pd-l-1rem">{{xqInfos.totalPrice}}</text>
+			<text class="tc-66 pd-l-rem5">元</text>
+		</view>
+	</view>
+	<view class="group-panel-box">
+		<view class="fw-b">其他信息</view>
+		<view class="fx-hc">
+			<text class="fx-g1">编号</text>
+			<text class="pd-l-1rem">{{xqInfos.xqCode}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">状态</text>
+			<text wx:if="{{xqInfos.pubStatus==1}}">未发布</text>
+			<text wx:elif="{{xqInfos.pubStatus==2}}">已发布</text>
+			<text wx:else >已结束</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">仓库</text>
+			<text class="pd-l-1rem">{{xqInfos.ckAddress}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">有效期至</text>
+			<text class="pd-l-1rem">{{xqInfos.endDate}}</text>
+		</view>
+		<view class="fx-hc" bindtap="seeRemark">
+			<text class="fx-g1 ws-n">描述</text>
+			<text class="pd-l-1rem of-te">{{xqInfos.xqDesc}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">创建时间</text>
+			<text class="pd-l-1rem">{{xqInfos.createTime}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">上次修改</text>
+			<text class="pd-l-1rem">{{xqInfos.modifyTime}}</text>
+		</view>
+	</view>
+	<view class="group-panel-box" wx:if="{{xqInfos.picList.length}}">
+		<view class="fw-b">照片</view>
+		<view class="fx-hc fx-wp">
+			<view wx:for="{{xqInfos.picList}}" wx:key="fileId" class="xq-pic-box" bindtap="previewXqPics" data-nth="{{index}}">
+				<image src="{{xqPicUrl + item.fileId}}"></image>
+				<text><!-- 占位符 --></text>
+			</view>
+		</view>
+		<!--view wx:else class="tc-99">暂无照片</view-->
+	</view>
+	<view wx:if="{{xqInfos.pubStatus==1}}" class="pd-t-1rem pd-b-1rem5">
+		<view class="fx-hc mg-b-1rem">
+			<button bindtap="publishXq" class="fx-g1 bg-g0 tc-ff pd-tb-rem7">{{isPublishing ? '正在发布' : '发 布'}}</button>
+			<text style="display:inline-block;width:2rem"><!--占位符--></text>
+			<button bindtap="gotoAdds" class="fx-g1 bg-mc tc-ff pd-tb-rem7">修 改</button>
+		</view>
+		<view>
+			<button bindtap="deleteXq" class="bg-ff tc-66 pd-tb-rem7 wi-fx">{{isDeleting ? '正在终止...' : '终 止'}}</button>
+		</view>
+	</view>
+	<view wx:elif="{{xqInfos.pubStatus==2}}" class="pd-t-1rem pd-b-1rem5">
+		<view class="fx-hc">
+			<button bindtap="deleteXq" class="fx-g1 bg-ff tc-66 pd-tb-rem7">{{isDeleting ? '正在终止...' : '终 止'}}</button>
+			<text style="display:inline-block;width:2rem"><!--占位符--></text>
+			<button bindtap="gotoAdds" class="fx-g1 bg-mc tc-ff pd-tb-rem7">修 改</button>
+		</view>
+	</view>
+	<view wx:else class="tc-aa ta-c pd-t-1rem pd-b-1rem5">需求已结束，暂不支持修改或终止</view>
+</view>

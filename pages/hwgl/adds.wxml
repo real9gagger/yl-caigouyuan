@@ -1,0 +1,67 @@
+<!-- 添加货物 -->
+<view class="pd-lr-1rem">
+	<view class="fx-hc bd-b-f0 tp-dim-over">
+		<text>货物名称</text>
+		<picker class="fx-g1 pd-tb-1rem ta-r text-line-hei"
+				mode="selector" 
+				bindchange="onCategoryChanged" 
+				range="{{categoryList}}" 
+				range-key="categoryName">
+			<text wx:if="{{iSelectedCategory >= 0}}">{{categoryList[iSelectedCategory].categoryName}}</text>
+			<text wx:else class="tc-99">正在获取名称...</text>
+		</picker>
+		<text class="fa fa-angle-right fs-1rem2 tc-99 pd-l-rem5"></text>
+	</view>
+	<view class="fx-hc bd-b-f0 tp-dim-over">
+		<text>货物类型</text>
+		<picker class="fx-g1 pd-tb-1rem ta-r text-line-hei"
+				mode="selector" 
+				bindchange="onGoodsChanged" 
+				range="{{goodsList}}" 
+				range-key="goodsName">
+			<text wx:if="{{iSelectedGoods >= 0}}">{{goodsList[iSelectedGoods].goodsName}}</text>
+			<text wx:else class="tc-99">正在获取类型...</text>
+		</picker>
+		<text class="fa fa-angle-right fs-1rem2 tc-99 pd-l-rem5"></text>
+	</view>
+	<view class="fx-hc bd-b-f0 tp-dim-over">
+		<text>计算方式</text>
+		<picker class="fx-g1 pd-tb-1rem ta-r text-line-hei" mode="selector" bindchange="onModesChanged" range="{{countModes}}" range-key="name">
+			{{countModes[iSelectedMode].name}}
+		</picker>
+		<text class="fa fa-angle-right fs-1rem2 tc-99 pd-l-rem5"></text>
+	</view>
+	<view wx:if="{{iSelectedMode===0}}" class="fx-hc bd-b-f0 tp-dim-over {{warningCode===1 ? 'empty-warning' : ''}}">
+		<text>货物体积</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" placeholder-class="ph-css"  bindinput="onPriceChanged" model:value="{{form_volume}}" type="digit" placeholder="请填写体积" />
+		<text class="op-6 pd-l-rem5">方</text>
+	</view>
+	<view wx:elif="{{iSelectedMode===1}}" class="fx-hc bd-b-f0 tp-dim-over {{warningCode===1 ? 'empty-warning' : ''}}">
+		<text>货物重量</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" placeholder-class="ph-css" bindinput="onPriceChanged" model:value="{{form_weight}}" type="digit" placeholder="请填写重量" />
+		<text class="op-6 pd-l-rem5">吨</text>
+	</view>
+	<view wx:elif="{{iSelectedMode===2}}" class="fx-hc bd-b-f0 tp-dim-over {{warningCode===1 ? 'empty-warning' : ''}}">
+		<text>货物数量</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" placeholder-class="ph-css" bindinput="onPriceChanged" model:value="{{form_quantity}}" type="digit" placeholder="请填写数量" />
+		<text class="op-6 pd-l-rem5">件</text>
+	</view>
+	<view class="fx-hc bd-b-f0 tp-dim-over {{warningCode===2 ? 'empty-warning' : ''}}">
+		<text>货物单价</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" placeholder-class="ph-css" bindinput="onPriceChanged" data-type="1" model:value="{{form_price}}" type="digit" placeholder="请填写单价" />
+		<text class="op-6 pd-l-rem5">元</text>
+	</view>
+	<view class="fx-hc bd-b-f0 tp-dim-over {{warningCode===3 ? 'empty-warning' : ''}}">
+		<text>货物总价</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" placeholder-class="ph-css" bindinput="onPriceChanged" data-type="2" model:value="{{form_total}}" type="digit" placeholder="请填写总价" />
+		<text class="op-6 pd-l-rem5">元</text>
+	</view>
+	<view class="fx-hc bd-b-f0 tp-dim-over {{warningCode >= 4 ? 'empty-warning' : ''}}">
+		<text>货物规格</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" placeholder-class="ph-css" model:value="{{form_desc}}" type="text" placeholder="请填写规格" />
+	</view>
+
+	<view class="pd-t-4rem pd-b-1rem">
+		<button bindtap="onSubmitGoods" class="bg-mc tc-ff pd-tb-rem7 wi-fx">确 定</button>
+	</view>
+</view>

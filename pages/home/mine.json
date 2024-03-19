@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "dbzj-box": "/components/dbzj/dbzj"
+  },
+  "navigationBarTitleText":"我的",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#1ba4f0",
+  "backgroundTextStyle": "light"
+}

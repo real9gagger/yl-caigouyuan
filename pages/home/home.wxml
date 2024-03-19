@@ -1,0 +1,67 @@
+<!--采购小程序主页-->
+<view class="bg-f0 of-a" style="height:calc(100vh - {{viewMarginBottom}}px)">
+	<view style="height:26vw" class="of-h">
+		<image class="wi-f" src="../../images/app_cover2.jpg"></image>
+	</view>
+	<view class="fx-hc mg-rem5 bg-ff br-10 of-h">
+		<view class="fx-g1 ta-c tp-dim pd-tb-1rem" bindtap="gotoSubPage" data-url="../spgl/list">
+			<view class="fa fa-shopping-bag btn-list-icon bg-b0"></view>
+			<view class="fs-rem8">商城列表</view>
+		</view>
+		<view class="fx-g1 ta-c tp-dim pd-tb-1rem" bindtap="gotoSubPage" data-url="../xqgl/list">
+			<view class="fa fa-file-text-o btn-list-icon bg-g1"></view>
+			<view class="fs-rem8">求购列表</view>
+		</view>
+		<view class="fx-g1 ta-c tp-dim pd-tb-1rem" bindtap="gotoSubPage" data-url="../xqgl/adds?from=home">
+			<view class="fa fa-send btn-list-icon bg-o0"></view>
+			<view class="fs-rem8">发布需求</view>
+		</view>
+	</view>
+	<view wx:if="{{!xqList}}" class="pd-t-2rem ta-c tc-99">
+		<text class="fa fa-circle-o-notch fa-spin fs-2rem"></text>
+	</view>
+	<view wx:elif="{{xqList.length}}" class="pd-lr-rem5 pd-b-3rem">
+		<view wx:for="{{xqList}}" 
+			wx:key="xqID" 
+			class="pd-1rem br-10 mg-t-rem5 bg-ff tp-dim"
+			bindtap="gotoSubPage" 
+			data-url="../spgl/list?spid={{item.spID}}">
+			<view class="fx-hc mg-b-1rem">
+				<text class="xianhuo-tips-box">现货</text>
+				<text class="fw-b fx-g1 pd-l-rem5">{{item.goodsCategory}} 单板</text>
+				<text class="tc-99 fa fa-clock-o"></text>
+				<text class="pd-l-rem3">{{item.endDate}}</text>
+			</view>
+			<view class="fx-hc">
+				<text class="tc-66" decode>等&emsp;级：</text>
+				<text class="fx-g1 pd-l-1rem">{{item.goodsName}}</text>
+			</view>
+			<view class="fx-hc">
+				<text class="tc-66" decode>规&emsp;格：</text>
+				<text class="fx-g1 pd-l-1rem">{{item.goodsDesc}}</text>
+			</view>
+			<view class="fx-hc">
+				<text class="tc-66" decode>数&emsp;量：</text>
+				<text class="fx-g1 pd-l-1rem">{{item.goodsNums}} 立方米</text>
+			</view>
+			<view class="fx-hc">
+				<text class="tc-66" decode>单&emsp;价：</text>
+				<text class="pd-l-1rem tc-r0">{{item.unitPrice}}</text>
+				<text class="fx-g1" decode="{{true}}">&nbsp;元/立方米</text>
+			</view>
+			<!--view class="fx-hc">
+				<text class="tc-66">总价：</text>
+				<text class="fx-g1 pd-l-1rem">{{item.totalPrice}} 元</text>
+			</view-->
+			<view class="fx-hc">
+				<text class="tc-66">仓库地：</text>
+				<text class="fx-g1 of-te pd-l-1rem">{{item.spAddress}}</text>
+			</view>
+		</view>
+	</view>
+	<view wx:else class="mg-t-2rem">
+		<nodata-box bottom-text="暂无商品"></nodata-box>
+	</view>
+</view>
+<!-- 底部栏，需要放在最外层！！！ -->
+<dbzj-box tab-index="1"></dbzj-box>

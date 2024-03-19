@@ -1,0 +1,61 @@
+<view class="hi-s pd-1rem">
+	<view class="ta-c fw-b fs-1rem5 pd-tb-1rem mg-b-2rem">{{picTips}}</view>
+	<view class="uploader-pic-box tp-dim" bindtap="onTapingPic">
+		<view wx:if="{{picID===0}}" class="ps-a po-f fx-r fx-mc">
+			<image style="width:2rem;height:2rem;" src="../../images/plus_icon1.svg"></image>
+			<text class="middle-tips-text">上传</text>
+		</view>
+		<view wx:elif="{{picID===1}}" class="ps-a po-l-0 wi-f po-t-c ta-c tc-b0 fs-1rem25">
+			<text class="fa fa-circle-o-notch fa-spin"></text>
+			<text decode>&nbsp;正在上传... ({{uploadProgress}}%)</text>
+		</view>
+		<view wx:elif="{{picID===2}}" class="ps-a po-l-0 wi-f po-t-c ta-c">
+			<view class="tc-red fs-1rem25"><text class="fa fa-times-circle"> 上传失败</text></view>
+			<view wx:if="{{uploadErrMsg}}" class="tc-00 fs-1rem pd-t-rem5">{{uploadErrMsg}}</view>
+			<view class="tc-66 fs-1rem pd-t-rem5">请重新上传</view>
+		</view>
+		<view wx:elif="{{picID===3}}" class="ps-a po-l-0 wi-f po-t-c ta-c tc-g0 fs-1rem25">
+			<text class="fa fa-check-circle"> 上传成功</text>
+		</view>
+		<block wx:else >
+			<view class="ps-a po-f">
+				<image class="wh-f" src="{{picBaseUrl + picID}}"></image>
+			</view>
+			<view class="ps-a zi-x1 po-f bg-tl tc-ff tp-dim">
+				<view class="wh-f fx-r fx-mc ta-c op-7">
+					<view wx:if="{{isNewPic}}">
+						<image class="img-icon-box1" src="../../images/re_upload.svg"></image>
+						<view>重新上传</view>
+					</view>
+					<view wx:else >
+						<image class="img-icon-box2" src="../../images/preview_pic.svg"></image>
+						<view>预览照片</view>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+	<view class="mg-t-3rem">
+		<block wx:if="{{picID === 0}}">
+			<view class="ta-c tc-cc">请上传照片</view>
+		</block>
+		<block wx:elif="{{picID === 1}}">
+			<view class="ta-c tc-cc">正在上传，请耐心等待...</view>
+		</block>
+		<block wx:elif="{{picID === 2}}">
+			<view class="ta-c tc-cc">上传失败，请重试</view>
+		</block>
+		<block wx:elif="{{picID === 3}}">
+			<view class="ta-c tc-cc">上传成功，图片加载中...</view>
+		</block>
+		<block wx:else >
+			<block wx:if="{{isNewPic}}">
+				<button bindtap="onFuckDone" class="bg-mc tc-ff pd-tb-rem7 wi-fx">确 定</button>
+			</block>
+			<block wx:else>
+				<button bindtap="choosePic" class="bg-mc tc-ff pd-tb-rem7 wi-fx">重新上传</button>
+			</block>
+			<view bindtap="deletePic" class="ta-c tc-99 pd-tb-rem7 mg-t-1rem tp-dim">删 除</view>
+		</block>
+	</view>
+</view>

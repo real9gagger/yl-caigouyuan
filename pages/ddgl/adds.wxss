@@ -1,0 +1,41 @@
+/* 采购主页 */
+.content-box{
+	border: 0px solid transparent;
+	border-radius: 10px;
+	padding:0 1rem;
+	margin-bottom: 0.5rem;
+	font-size: 1rem;
+	overflow: hidden;
+	background-color: #fff;
+}
+
+.fhr-icon{/*发货人*/
+	background-color: #2e53f4;
+	color: #fff;
+	width: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.shr-icon{/*收货人*/
+	background-color: #f29246;
+	color: #fff;
+	width: 2rem;
+	line-height: 2rem;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.ontap-light{position:relative}
+.ontap-light:active::before{
+	content:"";
+	display:block;
+	position:absolute;
+	left:-1rem;
+	top:0;
+	bottom:0;
+	right:-1rem;
+	z-index:9;
+	background-color:rgba(0,0,0,0.1);
+}

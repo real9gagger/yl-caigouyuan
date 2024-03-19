@@ -1,0 +1,32 @@
+/* 商品详情 */
+.xianhuo-icon-box{
+	display: inline-block;
+	color: #00ab28;
+	border: 1px solid #00ab28;
+	padding:0 10px;
+	border-radius: 20px;
+	font-size: 14px;
+}
+
+.check-icon-box{
+	display: inline-block;
+	width: 1.375rem;
+	height: 1.375rem;
+	margin-right: 5px;
+}
+.avatar-image-box{
+	width: 3rem;
+	height:3rem;
+	overflow: hidden;
+	border-radius: 50%;
+}
+.share-image-box{
+	width: 1.375rem;
+	height: 1.375rem;
+	overflow: hidden;
+	border-radius: 50%;
+}
+.recommend-item-box{
+	width: 50%;
+	padding: 0.25rem;
+}

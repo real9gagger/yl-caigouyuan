@@ -1,0 +1,4 @@
+<view class="img-container">
+	<image src="../../images/no_data1.svg" class="img-box"></image>
+	<view class="img-text">{{bottomText}}</view>
+</view>

@@ -1,0 +1,17 @@
+<!-- 下单成功 -->
+<view class="pd-1rem">
+	<view class="ta-c tc-g0 fs-1rem5 pd-t-1rem">
+		<text class="fa fa-check-circle"></text>
+		下单成功
+	</view>
+	<view class="ta-c pd-t-1rem">
+		订单号
+		<text class="fw-b">{{orderNo}}</text>
+	</view>
+	<view class="ta-c pd-t-5rem">
+		<button class="bg-mc tc-ff pd-tb-rem7 wi-fx" bindtap="jixuXd">继续下单</button>
+	</view>
+	<view class="ta-c pd-t-2rem">
+		<button class="bg-f0 tc-mc pd-tb-rem7 wi-fx" bindtap="chakanDd">查看订单</button>
+	</view>
+</view>

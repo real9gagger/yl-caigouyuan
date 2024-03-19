@@ -1,0 +1,29 @@
+<view class="fx-c wi-f hi-s bg-f0 of-h">
+	<view class="pd-lr-1rem">
+		<sszj-box place-holder="车牌号" bindsearching="onInputDone"></sszj-box>
+	</view>
+	<view class="fx-g1 of-a bg-ff" wx:if="{{searchCount}}">
+		<block wx:if="{{myCarNo}}">
+			<view class="pd-lr-1rem tp-dim-less bg-ff"
+				bindtap="onCarSelected"
+				data-index="-1">
+				<view class="pd-tb-1rem fx-hc">
+					<text class="pd-r-rem5 tc-66">已选</text>
+					<text class="fx-g1 tc-g0">{{myCarNo}}</text>
+					<image class="row-check-icon" src="../../images/check_icon2.svg"></image>
+				</view>
+			</view>
+			<view class="pd-t-rem5 bg-f0"><!--占位符--></view>
+		</block>
+		<view wx:for="{{carList}}" wx:if="{{!item.isHide}}" wx:key="index" 
+			class="pd-lr-1rem tp-dim-less"
+			bindtap="onCarSelected"
+			data-index="{{index}}">
+			<view class="pd-tb-1rem bd-b-f0">
+				<text>{{item.carNo}}</text>
+			</view>
+		</view>
+		<view class="ta-c tc-99 pd-tb-1rem fs-rem8">没有更多了~</view>
+	</view>
+	<view wx:else class="ta-c pd-1rem tc-99">暂无车辆</view>
+</view>

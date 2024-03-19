@@ -1,0 +1,25 @@
+<!-- 价格区间组件 -->
+<view wx:if="{{isShow}}" class="ps-f po-f" style="{{cssStyle}}">
+	<view class="wh-f bg-tl price-ranges-mask" bindtap="onCancel"></view>
+	<view class="ps-a po-tl-0 wi-s bg-ff price-ranges-wraper">
+		<view class="ta-c pd-b-rem5 {{headerText ? 'pd-t-1rem' : ''}}">{{headerText}}</view>
+		<view class="fx-r fx-wp">
+			<view wx:for="{{rangeList}}" wx:key="start" class="fx-b4 pd-rem5">
+				<view class="price-ranges-box {{item.checked ? 'checked' : ''}}" bindtap="onChecked" data-nth="{{index}}">
+					<text>{{item.start}}</text>
+					<text wx:if="{{!item.end}}">元以上</text>
+					<text wx:else >-{{item.end}}元</text>
+				</view>
+			</view>
+		</view>
+		<view class="fx-hc pd-b-1rem pd-t-rem5 pd-lr-rem5">
+			<text decode>自定义&nbsp;</text>
+			<input class="fx-g1 price-ranges-input" model:value="{{minInputs}}" maxlength="16" cursor-spacing="20" type="digit" bindinput="onInput" placeholder="最低价格" />
+			<text decode>&nbsp;-&nbsp;</text>
+			<input class="fx-g1 price-ranges-input" model:value="{{maxInputs}}" maxlength="16" cursor-spacing="20" type="digit" bindinput="onInput" placeholder="最高价格" />
+		</view>
+		<view class="pd-lr-rem5 pd-b-1rem">
+			<button class="bg-b0 tc-ff pd-tb-rem5 wi-fx" bindtap="onConfirm">确定</button>
+		</view>
+	</view>
+</view>

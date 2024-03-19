@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "dbzj-box": "/components/dbzj/dbzj",
+    "nodata-box": "/components/nodata/nodata"
+  },
+  "navigationBarTitleText":"主页"
+}

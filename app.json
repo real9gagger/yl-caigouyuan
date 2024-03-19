@@ -1,0 +1,63 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/logs/logs",
+		"pages/maper/maper",
+		"pages/ddgl/adds",
+		"pages/ddgl/list",
+		"pages/ddgl/info",
+		"pages/ddgl/succ",
+		"pages/ckgl/adds",
+		"pages/ckgl/sels",
+		"pages/ckgl/list",
+		"pages/hwgl/adds",
+		"pages/xqjz/list",
+		"pages/xqjz/adds",
+		"pages/xqjz/sels",
+		"pages/sjgl/sels",
+		"pages/xqgl/adds",
+		"pages/xqgl/list",
+		"pages/xqgl/info",
+		"pages/home/home",
+		"pages/home/mine",
+		"pages/spgl/list",
+		"pages/spgl/info",
+		"pages/xqgl/details",
+		"pages/sjgl/adds",
+		"pages/sjgl/list",
+		"pages/clgl/adds",
+		"pages/uploader/uploader",
+		"pages/clgl/sels",
+		"pages/clgl/list",
+		"pages/maper/inputer"
+	],
+	"permission": {
+		"scope.userLocation": {
+			"desc": "你的位置信息将用于小程序位置定位"
+		}
+	},
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#1ba4f0",
+		"navigationBarTitleText": "采购员小程序",
+		"navigationBarTextStyle": "white"
+	},
+	"tabBar": {
+		"list": [
+			{
+				"pagePath": "pages/home/home",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/ddgl/adds",
+				"text": "采购"
+			},
+			{
+				"pagePath": "pages/home/mine",
+				"text": "我的"
+			}
+		]
+	},
+	"style": "v2",
+	"sitemapLocation": "sitemap.json"
+}

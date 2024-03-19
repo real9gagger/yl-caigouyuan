@@ -1,0 +1,30 @@
+<!--新增仓库-->
+<view class="bg-f0 hi-s">
+	<view class="pd-lr-1rem pd-tb-rem5 tc-99"><!--基本信息--></view>
+	<view class="pd-lr-1rem bg-ff fx-hc bd-b-f0 tp-dim {{errMsgCode===1 ? 'empty-warning' : ''}}">
+		<text>姓名</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" model:value="{{form_name}}"  type="text" placeholder-class="ph-css" placeholder="仓库管理员姓名" />
+	</view>
+	<view class="pd-lr-1rem bg-ff fx-hc bd-b-f0 tp-dim {{errMsgCode===2 ? 'empty-warning' : ''}}">
+		<text>手机号</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" model:value="{{form_phone}}" type="number" placeholder-class="ph-css" placeholder="仓库管理员手机号" />
+	</view>
+	<view class="pd-lr-1rem bg-ff fx-hc bd-b-f0 tp-dim {{errMsgCode===3 ? 'empty-warning' : ''}}">
+		<text>仓库</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" model:value="{{form_warehouse}}" type="text" placeholder-class="ph-css" placeholder="仓库名称" />
+	</view>
+	<view class="pd-lr-1rem pd-tb-rem5 tc-99"><!--其他信息--></view>
+	<view class="pd-lr-1rem bg-ff fx-hc bd-b-f0 tp-dim {{errMsgCode===4 ? 'empty-warning' : ''}}" bindtap="gotoMaper">
+		<text class="pd-r-1rem">详细地址</text>
+		<text wx:if="{{form_address}}" class="fx-g1 pd-tb-1rem ta-r text-line-hei">{{form_address}}</text>
+		<text wx:else class="fx-g1 pd-tb-1rem ta-r text-line-hei op-5">选择仓库地址</text>
+		<text class="fa fa-angle-right op-5 pd-l-rem5"></text>
+	</view>
+	<view class="ta-r tc-99 pd-lr-1rem pd-t-rem2 fs-rem8">地址经纬度 ({{form_lon}}, {{form_lat}})</view>
+	<view class="mg-t-1rem ta-c tc-red" style="height:2rem;line-height:2rem;">{{errMsgText}}</view>
+	<view class="pd-1rem">
+		<button wx:if="{{isSubmitDone}}" class="bg-g0 tc-ff pd-tb-rem7 wi-fx"><text class="fa fa-check-circle pd-r-rem5"></text>保存成功</button>
+		<button wx:elif="{{!isAjaxing}}" class="bg-mc tc-ff pd-tb-rem7 wi-fx" bindtap="onSubmitInfo">保 存</button>
+		<button wx:else class="bg-mc tc-ff pd-tb-rem7 wi-fx op-6">正在提交...</button>
+	</view>
+</view>

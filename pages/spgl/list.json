@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "qjzj-box": "/components/qjzj/qjzj"
+  },
+  "navigationBarTitleText":"商城"
+}

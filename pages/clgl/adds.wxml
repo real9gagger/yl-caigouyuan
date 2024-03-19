@@ -1,0 +1,100 @@
+<!-- 新增司机 -->
+<view wx:if="{{!completeBoxShow}}" class="bg-f0 hi-s">
+	<view class="pd-lr-1rem pd-tb-rem5 tc-99">基本信息</view>
+	<view class="fx-hc bd-b-f0 tp-dim pd-lr-1rem bg-ff {{errMsgCode===1 ? 'empty-warning' : ''}}">
+		<text>车牌号</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" 
+			placeholder-class="ph-css" 
+			model:value="{{formCarNo}}" 
+			type="text" 
+			bindtap="onCarnoClicked"
+			disabled="{{!formCarID}}"
+			placeholder="车牌号"/>
+	</view>
+	<view class="fx-hc bd-b-f0 tp-dim pd-lr-1rem bg-ff">
+		<text>车辆识别代号</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" placeholder-class="ph-css" model:value="{{formCarLicense}}" type="text" placeholder="（选填）" maxlength="50" />
+	</view>
+	<!--view class="fx-hc bd-b-f0 tp-dim pd-lr-1rem bg-ff">
+		<text>运营证号</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" placeholder-class="ph-css" model:value="{{formBusinessLicense}}" type="text" placeholder="（选填）" maxlength="50" />
+	</view-->
+	<view class="pd-lr-1rem pd-tb-rem5 tc-99">证件照片</view>
+	<view class="fx-hc bd-b-f0 pd-1rem bg-ff tp-dim {{errMsgCode===2 ? 'empty-warning' : ''}}" bindtap="gotoUploadPage" data-pkey="DL">
+		<text>行驶证照片</text>
+		<text wx:if="{{formDrivingLicenseFileId}}" class="fx-g1 ta-r"> 已上传</text>
+		<text wx:else class="fx-g1 ta-r op-5">未上传</text>
+		<text class="fa fa-angle-right pd-l-rem5 op-5"></text>
+	</view>
+	<view class="pd-lr-1rem pd-t-rem5">
+        <block wx:if="{{orcErrorType===1}}">
+          <text class="fa fa-info-circle tc-66"></text>
+          <text class="tc-66 pd-r-rem5"> 未检测到行驶证</text>
+          <text class="fa fa-repeat tc-b0" bindtap="recognizeVehicleLicense"> 重新识别</text>
+        </block>
+        <block wx:elif="{{orcErrorType===2}}">
+          <text class="fa fa-check-circle tc-g0"></text>
+          <text class="tc-g0 pd-r-rem5"> 识别成功。识别结果已填入文本框</text>
+          <text class="fa fa-repeat tc-b0" bindtap="recognizeVehicleLicense"> 重新识别</text>
+        </block>
+        <block wx:elif="{{orcErrorType===3}}">
+          <text class="fa fa-times-circle tc-red"></text>
+          <text class="tc-red pd-r-rem5"> {{orcErrorMsg}}</text>
+		  <text class="fa fa-pencil tc-b0" bindtap="fillInOrcResult"> 填入</text>
+		  <text class="pd-lr-rem5 tc-99">或</text>
+          <text class="fa fa-repeat tc-b0" bindtap="recognizeVehicleLicense"> 重新识别</text>
+        </block>
+        <block wx:elif="{{orcErrorType===4}}">
+          <text class="fa fa-circle-o-notch fa-spin tc-b0"></text>
+          <text class="tc-b0"> 正在识别...</text>
+        </block>
+        <block wx:else >
+          <text class="fa fa-info-circle"></text>
+          <text class="tc-66 pd-r-rem5"> 支持行驶证识别功能</text>
+		  <text wx:if="{{formDrivingLicenseFileId}}" class="fa fa-life-ring tc-b0" bindtap="recognizeVehicleLicense"> 识别</text>
+		  <text wx:else class="tc-b0" bindtap="gotoUploadPage" data-pkey="DL">立即试试</text>
+        </block>
+	</view>
+	<!--view class="fx-hc pd-1rem tp-dim bg-ff" bindtap="gotoUploadPage" data-pkey="OC">
+		<text>运营证照片</text>
+		<text wx:if="{{formOperationCertificateFileId >= 10}}" class="fx-g1 ta-r"> 已上传</text>
+		<text wx:else class="fx-g1 ta-r op-5">未上传（可选）</text>
+		<text class="fa fa-angle-right pd-l-rem5 op-5"></text>
+	</view-->
+	<view class="pd-1rem">
+		<view class="mg-b-1rem ta-c tc-red" style="height:2rem;line-height:2rem;">{{errMsgText}}</view>
+		<button wx:if="{{isAjaxing===0}}" bindtap="saveFuckData" class="bg-mc tc-ff pd-tb-rem7 wi-fx">保 存</button>
+		<button wx:elif="{{isAjaxing===1}}" class="bg-mc tc-ff pd-tb-rem7 wi-fx op-5">正在保存...</button>
+		<button wx:else class="bg-g0 tc-ff pd-tb-rem7 wi-fx"><text class="fa fa-check-circle pd-r-rem5"></text>保存成功</button>
+	</view>
+</view>
+<view wx:else class="bg-f0 hi-s of-a auto-complete-box">
+	<view class="bg-ff fx-hc">
+		<view style="width:60px;height:50px"><!--占位--></view>
+		<input class="fx-g1 pd-tb-1rem ta-c" 
+			   model:value="{{formCarNo}}" 
+			   type="text" 
+			   bindinput="getMatchesCarNo"
+			   focus="{{true}}"
+			   auto-focus="{{true}}"
+			   placeholder="请输入车牌号" />
+		<view class="pd-tb-1rem tc-mc ta-c tp-dim" style="width:60px" bindtap="onInputDone">{{formCarNo ? "完成" : "取消"}}</view>
+	</view>
+	<view wx:if="{{!completeNames}}" class="ta-c pd-1rem tc-99">		
+		<text class="fa fa-circle-o-notch fa-spin"></text>
+		<text class="pd-l-rem5">匹配中...</text>
+	</view>
+	<view wx:elif="{{completeNames.length}}">
+		<view class="ta-c pd-tb-1rem tc-99 fs-rem8">
+			<text class="fa fa-info-circle"></text>
+			<text class="pd-l-rem5">请关联已有的车辆，避免重复添加</text>
+		</view>
+		<view wx:for="{{completeNames}}" wx:key="vehicleNo" class="pd-lr-1rem bg-ff tp-dim" bindtap="onCompleteTaped" data-nth="{{index}}">
+			<view class="the-bottom-line">
+				<view>{{item.vehicleNo}}</view>
+				<view class="fs-rem8 tc-99">驾驶证号 {{item.carLicense || "未知"}}</view>
+			</view>
+		</view>
+		<view class="ta-c pd-tb-1rem tc-99 fs-rem8">没有更多了~</view>
+	</view>
+</view>

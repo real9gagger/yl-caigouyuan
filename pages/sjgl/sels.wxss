@@ -1,0 +1,12 @@
+/* 司机选择 */
+.driver-list-box{
+	width: 100vw;
+	height: 100vh;
+	background-color: #f0f0f0;
+	overflow: hidden;
+}
+.row-check-icon{
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
+}

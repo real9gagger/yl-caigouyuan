@@ -1,0 +1,102 @@
+<!--需求列表-->
+<scroll-view 
+	scroll-y="true" 
+	bindscroll="onPageScroll" 
+	bindscrolltolower="onScrollBottom"
+	class="bg-f0 of-a hi-s">
+	<view>
+		<!--view>
+			<sszj-box place-holder="货物名称或仓库名称" bindsearching="onInputDone"></sszj-box>
+		</view-->
+		<!-- 搜索下拉框 -->
+		<view wx:if="{{xqList && xqList.length}}" class="fx-hc ta-c bd-b-f0 ps-s po-t-0 wi-f bg-ff pd-tb-rem5">
+			<picker class="fx-g1 {{tabTapIndex===1 ? 'tc-b0' : ''}}"
+				mode="selector" 
+				bindchange="onCategorySelected"
+				bindcancel="onCategorySelected"
+				bindtap="setTabTapIndex"
+				data-tindex="1"
+				range="{{categoryList}}" 
+				header-text="货物分类"
+				range-key="name">
+				<text wx:if="{{categoryIndex > 0}}">{{categoryList[categoryIndex].name}}</text>
+				<text wx:else >品名</text>
+				<text class="fa fa-angle-down mg-l-rem3 fs-1rem4 arrow-down-box {{tabTapIndex===1 ? 'rt180deg' : ''}}"></text>
+			</picker>
+			<picker class="fx-g1 {{tabTapIndex===2 ? 'tc-b0' : ''}}" 
+				mode="date" 
+				model:value="{{goodsEndate}}"
+				bindcancel="onEndateChange"
+				bindchange="onEndateChange"
+				bindtap="setTabTapIndex"
+				data-tindex="2"
+				header-text="有效期至">
+				<text wx:if="{{goodsEndate}}">{{goodsEndate}}</text>
+				<text wx:else >有效期</text>
+				<text class="fa fa-angle-down mg-l-rem3 fs-1rem4 arrow-down-box {{tabTapIndex===2 ? 'rt180deg' : ''}}"></text>
+			</picker>
+			<picker class="fx-g1 {{tabTapIndex===3 ? 'tc-b0' : ''}}"
+				mode="selector" 
+				bindchange="onStatusSelected"
+				bindcancel="onStatusSelected"
+				bindtap="setTabTapIndex"
+				data-tindex="3"
+				header-text="发布状态"
+				range="{{statusList}}" 
+				range-key="label">
+				<text wx:if="{{statusIndex > 0}}">{{statusList[statusIndex].label}}</text>
+				<text wx:else >状态</text>
+				<text class="fa fa-angle-down mg-l-rem3 fs-1rem4 arrow-down-box {{tabTapIndex===3 ? 'rt180deg' : ''}}"></text>
+			</picker>
+		</view>
+		<!-- 需求列表 -->
+		<view wx:if="{{!xqList}}" class="pd-t-1rem pd-b-2rem ta-c tc-99">
+			<text class="fa fa-circle-o-notch fa-spin"></text>
+			<text class="pd-l-rem3">正在加载...</text>
+		</view>
+		<view wx:elif="{{!xqList.length}}" class="pd-tb-1rem ta-c tc-99">暂无需求</view>
+		<view wx:else class="pd-lr-rem5">
+			<view wx:for="{{xqList}}" wx:key="xqID" 
+				class="pd-1rem br-10 mg-t-rem5 bg-ff tp-dim"
+				bindtap="gotoXqInfo" data-nth="{{index}}">
+				<view class="fx-hc mg-b-1rem">
+					<text class="qiugou-tips-box">求购</text>
+					<text class="fw-b fx-g1 pd-l-rem5">{{item.goodsCategory}} 单板</text>
+					<text class="tc-99 fa fa-clock-o"></text>
+					<text class="pd-l-rem3 pd-r-1rem">{{item.endDate}}</text>
+					<text wx:if="{{item.pubStatus==1}}" class="tc-b0">未发布</text>
+					<text wx:elif="{{item.pubStatus==2}}" class="tc-g0">已发布</text>
+					<text wx:else class="tc-66">已结束</text>
+				</view>
+				<view class="fx-hc">
+					<text class="tc-66" decode>等&emsp;级：</text>
+					<text class="fx-g1 pd-l-1rem">{{item.goodsName}}</text>
+				</view>
+				<view class="fx-hc">
+					<text class="tc-66" decode>规&emsp;格：</text>
+					<text class="fx-g1 pd-l-1rem">{{item.goodsDesc}}</text>
+				</view>
+				<view class="fx-hc">
+					<text class="tc-66" decode>数&emsp;量：</text>
+					<text class="fx-g1 pd-l-1rem">{{item.goodsNums}} 方</text>
+				</view>
+				<view class="fx-hc">
+					<text class="tc-66" decode>单&emsp;价：</text>
+					<text class="fx-g1 pd-l-1rem">{{item.unitPrice}} 元/方</text>
+				</view>
+				<view class="fx-hc">
+					<text class="tc-66" decode>总&emsp;价：</text>
+					<text class="fx-g1 pd-l-1rem">{{item.totalPrice}} 元</text>
+				</view>
+				<view class="fx-hc">
+					<text class="tc-66">交货地：</text>
+					<text class="fx-g1 of-te pd-l-1rem">{{item.ckAddress}}</text>
+				</view>
+			</view>
+			<view wx:if="{{xqCount < 0}}" class="pd-tb-1rem5 ta-c tc-99">正在加载...</view>
+			<view wx:else class="pd-tb-1rem5 ta-c tc-99">没有更多了~</view>
+		</view>
+	</view>
+</scroll-view>
+<!--添加新的采购需求-->
+<view class="add-btn {{isScrolling ? 'faded' : ''}}" bindtap="addCgXq"><image src="../../images/plus_white.png" /></view>

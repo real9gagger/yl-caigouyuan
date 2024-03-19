@@ -1,0 +1,16 @@
+/* 采购小程序主页 */
+.btn-list-icon{
+	width: 3.25rem;
+	line-height: 3.25rem;
+	border-radius: 50%;
+	font-size: 1.25rem;
+	color: #fff;
+	margin-bottom: 5px;
+}
+.xianhuo-tips-box{
+	color: #00ab28;
+	border: 1px #00ab28 solid;
+	border-radius: 20px;
+	padding:0px 5px;
+	font-size: 12px;
+}

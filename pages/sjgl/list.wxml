@@ -1,0 +1,32 @@
+<view class="driver-list-box fx-c">
+	<view wx:if="{{searchCount > 0}}" class="pd-lr-rem5">
+		<sszj-box id="page_sszj_box" place-holder="司机名称或手机号" bindsearching="onInputDone"></sszj-box>
+	</view>
+
+	<view wx:if="{{searchCount < 0}}" class="fx-g1 pd-1rem tc-99 ta-c">正在加载...</view>
+	<view wx:elif="{{searchCount}}" class="fx-g1 of-a pd-lr-rem5">
+		<view wx:for="{{driverList}}" wx:if="{{!item.isHide}}" wx:key="index" 
+			class="fx-hc pd-tb-rem5 pd-lr-1rem tp-dim bg-ff mg-b-rem5 br-10"
+			bindtap="editSjInfo"
+			data-index="{{index}}">
+			<view wx:if="{{item.imageList.length}}" class="driver-pic-box imgcount{{item.imageList.length}}">
+				<image 
+					wx:for="{{item.imageList}}" 
+					wx:for-item="subitem" 
+					wx:key="index"
+					src="{{picBaseUrl}}{{subitem}}"></image>
+			</view>
+			<view class="fx-g1">
+				<view>{{item.driverName}}</view>
+				<view class="tc-99 fs-rem8">手机号 {{item.driverPhone}}</view>
+				<view class="tc-99 fs-rem8">驾驶证号 {{item.driverNo}}</view>
+			</view>
+		</view>
+		<view class="ta-c tc-99 pd-tb-1rem fs-rem8">没有更多了~</view>
+	</view>
+	<view wx:else class="fx-g1 ta-c pd-1rem tc-99">暂无司机</view>
+
+	<view class="pd-rem5">
+		<button class="bg-mc tc-ff pd-tb-rem7 wi-fx" bindtap="gotoXzSj">新增司机</button>
+	</view>
+</view>

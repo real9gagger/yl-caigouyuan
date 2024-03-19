@@ -1,0 +1,1090 @@
+@import "/css/font-awesome.min.wxss";
+
+/**app.wxss**/
+page{
+	--main-color:#2e53f4;	/* 主色 */
+	font-size:calc(1vw + 13px);
+	position: relative;
+}
+
+view,scroll-view{
+	box-sizing: border-box;
+}
+button:active{opacity: 0.75}
+image{vertical-align:middle}
+
+.ph-css{color:inherit;opacity:0.5}/* placeholder css */
+
+.tp-dim:active{background-image:linear-gradient(0deg,rgba(0,0,0,0.1) 0px,rgba(0,0,0,0.1) 100%)}
+.tp-dim-less:active{background-image:linear-gradient(0deg,rgba(0,0,0,0.0) 0px,rgba(0,0,0,0.1) 1px,rgba(0,0,0,0.1) 100%)}
+
+.tp-dim-over{position:relative;overflow:visible}
+.tp-dim-over:active::before{
+	content:"";
+	display:block;
+	position:absolute;
+	top:0px;
+  	bottom:0px;
+  	left:-1rem;
+	right:-1rem;
+	z-index:99;
+	background-color:rgba(0,0,0,0.1);
+}
+
+.fs-12px{font-size:12px}
+.fs-rem5{font-size:0.5rem}
+.fs-rem75{font-size:0.75rem}
+.fs-rem8{font-size:0.8rem}
+.fs-1rem{font-size:1rem}
+.fs-1rem2{font-size:1.2rem}
+.fs-1rem25{font-size:1.25rem}
+.fs-1rem4{font-size:1.4rem}
+.fs-1rem5{font-size:1.5rem}
+.fs-1rem6{font-size:1.6rem}
+.fs-1rem8{font-size:1.8rem}
+.fs-2rem{font-size:2rem}
+.fs-2rem2{font-size:2.2rem}
+.fs-2rem4{font-size:2.4rem}
+.fs-2rem5{font-size:2.5rem}
+.fs-2rem6{font-size:2.6rem}
+.fs-2rem8{font-size:2.8rem}
+.fs-3rem{font-size:3rem}
+.fs-3rem2{font-size:3.2rem}
+.fs-3rem4{font-size:3.4rem}
+.fs-3rem5{font-size:3.5rem}
+.fs-3rem6{font-size:3.6rem}
+.fs-3rem8{font-size:3.8rem}
+.fs-4rem{font-size:4rem}
+.fs-4rem2{font-size:4.2rem}
+.fs-4rem4{font-size:4.4rem}
+.fs-4rem5{font-size:4.5rem}
+.fs-4rem6{font-size:4.6rem}
+.fs-4rem8{font-size:4.8rem}
+.fs-5rem{font-size:5rem}
+.fs-5rem2{font-size:5.2rem}
+.fs-5rem4{font-size:5.4rem}
+.fs-5rem5{font-size:5.5rem}
+.fs-5rem6{font-size:5.6rem}
+.fs-5rem8{font-size:5.8rem}
+.fs-6rem{font-size:6rem}
+.fs-6rem2{font-size:6.2rem}
+.fs-6rem4{font-size:6.4rem}
+.fs-6rem5{font-size:6.5rem}
+.fs-6rem6{font-size:6.6rem}
+.fs-6rem8{font-size:6.8rem}
+.fs-7rem{font-size:7rem}
+.fs-7rem2{font-size:7.2rem}
+.fs-7rem4{font-size:7.4rem}
+.fs-7rem5{font-size:7.5rem}
+.fs-7rem6{font-size:7.6rem}
+.fs-7rem8{font-size:7.8rem}
+.fs-8rem{font-size:8rem}
+.fs-8rem2{font-size:8.2rem}
+.fs-8rem4{font-size:8.4rem}
+.fs-8rem5{font-size:8.5rem}
+.fs-8rem6{font-size:8.6rem}
+.fs-8rem8{font-size:8.8rem}
+.fs-9rem{font-size:9rem}
+.fs-9rem2{font-size:9.2rem}
+.fs-9rem4{font-size:9.4rem}
+.fs-9rem5{font-size:9.5rem}
+.fs-9rem6{font-size:9.6rem}
+.fs-9rem8{font-size:9.8rem}
+.fs-xrem{font-size:10rem}
+
+/* flex 盒子布局 */
+.fx-c{display:-webkit-box;display:flex;flex-direction:column}
+.fx-r{display:-webkit-box;display:flex;flex-direction:row}
+.fx-vc{display:-webkit-box;display:flex;flex-direction:column;justify-content:center}/*垂直布局时，垂直居中*/
+.fx-hc{display:-webkit-box;display:flex;flex-direction:row;align-items:center}/*水平布局时，垂直居中*/
+.fx-ja{justify-content:space-around}/* 主轴 */
+.fx-jb{justify-content:space-between}
+.fx-jc{justify-content:center}
+.fx-je{justify-content:flex-end}
+.fx-js{justify-content:stretch}
+.fx-ab{align-items:baseline}/*交叉轴：垂直居中，水平居中*/
+.fx-ac{align-items:center}
+.fx-ae{align-items:flex-end}
+.fx-as{align-items:stretch}
+.fx-ca{align-content:space-around}/* 多根主轴的对齐方式 */
+.fx-cb{align-content:space-between}
+.fx-cc{align-content:center}
+.fx-ce{align-content:flex-end}
+.fx-cs{align-content:stretch}
+.fx-mc{align-items:center;justify-content:center} /* middle ceenter */
+.fx-wp{flex-wrap:wrap}
+.fx-wn{flex-wrap:nowrap}
+.fx-wr{flex-wrap:wrap-reverse}
+.fx-g1{flex:1 1 0}
+.fx-g2{flex:2 1 0}
+.fx-g3{flex:3 1 0}
+.fx-g4{flex:4 1 0}
+.fx-g5{flex:5 1 0}
+.fx-g6{flex:6 1 0}
+.fx-g7{flex:7 1 0}
+.fx-g8{flex:8 1 0}
+.fx-g9{flex:9 1 0}
+.fx-gx{flex:10 1 0}
+.fx-g1a{flex:1 1 auto}
+.fx-g2a{flex:2 1 auto}
+.fx-g3a{flex:3 1 auto}
+.fx-g4a{flex:4 1 auto}
+.fx-g5a{flex:5 1 auto}
+.fx-g6a{flex:6 1 auto}
+.fx-g7a{flex:7 1 auto}
+.fx-g8a{flex:8 1 auto}
+.fx-g9a{flex:9 1 auto}
+.fx-gxa{flex:10 1 auto}
+.fx-sc{align-self:center}
+.fx-st{align-self:flex-start}/* top */
+.fx-se{align-self:flex-end}
+.fx-ss{align-self:stretch}
+.fx-ba{flex-basis:auto}
+.fx-b0{flex-basis:0}
+.fx-b1{flex-basis:8.333333%}
+.fx-b2{flex-basis:16.666666%}
+.fx-b3{flex-basis:25%}
+.fx-b4{flex-basis:33.333333%}
+.fx-b5{flex-basis:41.666666%}
+.fx-b6{flex-basis:50%}
+.fx-b7{flex-basis:58.333333%}
+.fx-b8{flex-basis:66.666666%}
+.fx-b9{flex-basis:75%}
+.fx-b10{flex-basis:83.333333%}
+.fx-b11{flex-basis:91.666666%}
+.fx-b12{flex-basis:100%}
+
+.lh-1x{line-height:1}
+.lh-1x2{line-height:1.2}
+.lh-1x25{line-height:1.25}
+.lh-1x4{line-height:1.4}/* 1.4 倍 */
+.lh-1x5{line-height:1.5}
+
+.hi-0{height:0;overflow:hidden}
+.hi-f{height:100%}/* height full */
+.hi-h{height:50%}/* height half */
+.hi-a{height:auto}
+.hi-s{height:100vh}/* height stretch */
+.hi-min-a{min-height:auto}
+.hi-min-f{min-height:100%}
+.hi-min-s{min-height:100vh}
+.hi-max-n{max-height:none}
+.hi-max-0{max-height:0;overflow:hidden}
+.hi-max-s{max-height:100vh} /* stretch */
+
+.wi-0{width:0;overflow:hidden}
+.wi-f{width:100%}/* width full */
+.wi-fx{width:100% !important}
+.wi-h{width:50%}/* width half */
+.wi-a{width:auto}
+.wi-s{width:100vw}/* width stretch */
+.wi-ax{width:auto !important}
+.wi-min-a{min-width:auto}
+.wi-min-f{min-width:100%}
+.wi-min-s{min-width:100vw}
+.wi-max-n{max-width:none}
+.wi-max-0{max-width:0;overflow:hidden}
+.wi-max-s{max-width:100vw} /* stretch */
+.wi-max-f{max-width:100%} /* stretch */
+.wi-col-1{width:8.333333%}
+.wi-col-2{width:16.666666%}
+.wi-col-3{width:25%}
+.wi-col-4{width:33.333333%}
+.wi-col-5{width:41.666666%}
+.wi-col-6{width:50%}
+.wi-col-7{width:58.333333%}
+.wi-col-8{width:66.666666%}
+.wi-col-9{width:75%}
+.wi-col-10{width:83.333333%}
+.wi-col-11{width:91.666666%}
+.wi-col-12{width:100%}
+
+.wh-f{width: 100%;height:100%}
+
+.of-h{overflow:hidden}
+.of-a{overflow:auto}
+.of-v{overflow:visible}
+.of-s{overflow:scroll}
+.of-xs{overflow-x:scroll}
+.of-xa{overflow-x:auto}
+.of-xh{overflow-x:hidden}
+.of-ys{overflow-y:scroll}
+.of-ya{overflow-y:auto}
+.of-yh{overflow-y:hidden}
+.of-vs{overflow-x:hidden;overflow-y:auto} /* vertical scrollable */
+.of-hs{overflow-x:auto;overflow-y:hidden} /* horizontal scrollable */
+.of-te{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}/* 文本溢出显示省略号 */
+
+.fl-n{float:none}
+.fl-r{float:right}
+.fl-l{float:left}
+.fl-c::after{content:"";display:table;clear:both}/* float clear */
+
+.fw-i{font-weight:inherit}
+.fw-b{font-weight:bold}
+.fw-n{font-weight:normal}
+
+.br-0{border-radius:0}
+.br-5{border-radius:5px}
+.br-10{border-radius:10px}
+.br-15{border-radius:15px}
+.br-20{border-radius:20px}
+.br-25{border-radius:25px}
+.br-30{border-radius:30px}
+.br-35{border-radius:35px}
+.br-40{border-radius:40px}
+.br-45{border-radius:45px}
+.br-50{border-radius:50px}
+.br-x0{border-radius:100px}
+.br-xx{border-radius:1000px}
+.br-ih{border-radius:inherit}
+.br-h{border-radius:50%} /* border-radius half*/
+
+.bs-5-cc{box-shadow:0 0 5px 0 #ccc}
+.bs-10-cc{box-shadow:0 0 10px 0 #ccc}
+.bs-15-cc{box-shadow:0 0 15px 0 #ccc}
+.bs-20-cc{box-shadow:0 0 20px 0 #ccc}
+.bs-5-66{box-shadow:0 0 5px 0 #666}
+.bs-10-66{box-shadow:0 0 10px 0 #666}
+.bs-15-66{box-shadow:0 0 15px 0 #666}
+.bs-20-66{box-shadow:0 0 20px 0 #666}
+
+.ws-n{white-space:nowrap}
+.ws-w{white-space:pre-wrap}
+.ws-b{word-break:break-word}
+.ws-a{word-break:break-all}
+
+.ta-c{text-align:center}
+.ta-r{text-align:right}
+.ta-l{text-align:left}
+.ta-j{text-align:justify;text-align-last:justify}
+.ta-m{text-align:match-parent}
+
+.tc-00{color:#000}/* text color */
+.tc-33{color:#333}
+.tc-66{color:#666}
+.tc-77{color:#777}
+.tc-88{color:#888}
+.tc-99{color:#999}
+.tc-aa{color:#aaa}
+.tc-cc{color:#ccc}
+.tc-dd{color:#ddd}
+.tc-ff{color:#fff}
+.tc-g0{color:#00ab28}
+.tc-red{color:red}
+.tc-r0{color:#c6284b}
+.tc-r1{color:#ca2828}
+.tc-b0{color:#1ba4f0}
+.tc-o0{color:#f29246}
+.tc-mc{color:var(--main-color)}
+
+.bg-mc{background-color:var(--main-color)}
+.bg-g0{background-color:#00ab28}
+.bg-g1{background-color:#8ab381}
+.bg-b0{background-color:#1ba4f0}
+.bg-o0{background-color:#f4a262}
+.bg-ih{background-color:inherit}
+.bg-ff{background-color:#ffffff}
+.bg-fc{background-color:#fcfcfc}
+.bg-f9{background-color:#f9f9f9}
+.bg-f6{background-color:#f6f6f6}
+.bg-f3{background-color:#f3f3f3}
+.bg-f0{background-color:#f0f0f0}
+.bg-df{background-color:#dfdfdf}
+.bg-dd{background-color:#dddddd}
+.bg-cc{background-color:#cccccc}
+.bg-00{background-color:#000000}
+.bg-tl{background-color:rgba(0,0,0,0.5)} /* translucent 半透明*/
+.bg-tp{background-color:transparent}
+
+.bd-n{border:0px none transparent}
+.bd-0{border:0px solid transparent}
+.bd-tp{border:1px solid transparent}
+.bd-ff{border:1px solid #fff}
+.bd-dd{border:1px solid #ddd}
+.bd-cc{border:1px solid #ccc}
+.bd-aa{border:1px solid #aaa}
+.bd-66{border:1px solid #666}
+.bd-s{border:1px solid}
+.bd-mc{border:1px solid var(--main-color)}
+.bd-t-f0{border-top:1px solid #f0f0f0}
+.bd-b-f0{border-bottom:1px solid #f0f0f0}
+.bd-l-f0{border-left:1px solid #f0f0f0}
+.bd-r-f0{border-right:1px solid #f0f0f0}
+.bd-t-dd{border-top:1px solid #ddd}
+.bd-b-dd{border-bottom:1px solid #ddd}
+.bd-l-dd{border-left:1px solid #ddd}
+.bd-r-dd{border-right:1px solid #ddd}
+.bd-t-cc{border-top:1px solid #ccc}
+.bd-b-cc{border-bottom:1px solid #ccc}
+.bd-l-cc{border-left:1px solid #ccc}
+.bd-r-cc{border-right:1px solid #ccc}
+.bd-t-aa{border-top:1px solid #aaa}
+.bd-b-aa{border-bottom:1px solid #aaa}
+.bd-l-aa{border-left:1px solid #aaa}
+.bd-r-aa{border-right:1px solid #aaa}
+
+.dp-hx{display:none !important}
+.dp-hd{display:none} /* hide */
+.dp-il{display:inline}
+.dp-ib{display:inline-block}
+.dp-bx{display:block !important}
+.dp-bk{display:block}
+
+.op-h{visibility:hidden} /* 把它归在此类，opacity=0 可以触发事件，但这个不会触发事件 */
+.op-0{opacity:0.0}
+.op-1{opacity:0.1}
+.op-2{opacity:0.2}
+.op-3{opacity:0.3}
+.op-4{opacity:0.4}
+.op-5{opacity:0.5}
+.op-6{opacity:0.6}
+.op-7{opacity:0.7}
+.op-8{opacity:0.8}
+.op-9{opacity:0.9}
+.op-x{opacity:1.0}
+
+.ps-f{position:fixed;z-index:1}
+.ps-a{position:absolute;z-index:1}
+.ps-s{position:sticky;z-index:1}
+.ps-r{position:relative}
+
+.po-f{top:0;right:0;bottom:0;left:0} /* position full */
+.po-1{top:1px;right:1px;bottom:1px;left:1px}
+.po-n1{top:-1px;right:-1px;bottom:-1px;left:-1px} /* position full negative -1 */
+.po-tb-0{top:0;bottom:0}
+.po-lr-0{left:0;right:0}
+.po-tl-0{top:0;left:0}
+.po-tr-0{top:0;right:0}
+.po-bl-0{bottom:0;left:0}
+.po-br-0{bottom:0;right:0}
+.po-mc{left:50%;top:50%;transform:translate(-50%,-50%)} /* middle center */
+.po-t-n1{top:-1px}
+.po-t-0{top:0}
+.po-t-c{top:50%;transform:translateY(-50%)} /* top center */
+.po-t-f{top:100%} /* top full */
+.po-t-s{top:100vh} /* top stretch */
+.po-t-a{top:auto}
+.po-r-n1{right:-1px}
+.po-r-0{right:0}
+.po-r-f{right:100%} /* right full */
+.po-r-s{right:100vw} /* right stretch */
+.po-r-a{right:auto}
+.po-b-n1{bottom:-1px}
+.po-b-0{bottom:0}
+.po-b-f{bottom:100%} /* bottom full */
+.po-b-s{bottom:100vh} /* bottom stretch */
+.po-b-a{bottom:auto}
+.po-l-n1{left:-1px}
+.po-l-0{left:0}
+.po-l-c{left:50%;transform:translateX(-50%)} /* left center */
+.po-l-f{left:100%} /* left full */
+.po-l-s{left:100vw} /* left stretch */
+.po-l-a{left:auto}
+
+.zi-a{z-index:auto}
+.zi-b{z-index:-1} /* back */
+.zi-0{z-index:0}
+.zi-1{z-index:1}
+.zi-x{z-index:10}
+.zi-10{z-index:10}
+.zi-x0{z-index:100} /* 本文件中 x0 表示 一百 */
+.zi-x1{z-index:100} /* x后面的数字表示 10后面有多少个0 */
+.zi-x2{z-index:1000}
+.zi-x3{z-index:10000}
+.zi-x4{z-index:100000}
+.zi-x5{z-index:1000000}
+.zi-x6{z-index:10000000}
+.zi-x7{z-index:100000000}
+.zi-x8{z-index:1000000000}
+.zi-x9{z-index:10000000000}
+
+.pd-0{padding:0}
+.pd-rem1{padding:0.1rem} /* 0rem1 省略前缀0，下同 */
+.pd-rem2{padding:0.2rem}
+.pd-rem3{padding:0.3rem}
+.pd-rem4{padding:0.4rem}
+.pd-rem5{padding:0.5rem}
+.pd-rem6{padding:0.6rem}
+.pd-rem7{padding:0.7rem}
+.pd-rem8{padding:0.8rem}
+.pd-rem9{padding:0.9rem}
+.pd-1rem{padding:1rem}
+.pd-1rem1{padding:1.1rem}
+.pd-1rem2{padding:1.2rem}
+.pd-1rem3{padding:1.3rem}
+.pd-1rem4{padding:1.4rem}
+.pd-1rem5{padding:1.5rem}
+.pd-1rem6{padding:1.6rem}
+.pd-1rem7{padding:1.7rem}
+.pd-1rem8{padding:1.8rem}
+.pd-1rem9{padding:1.9rem}
+.pd-2rem{padding:2rem}
+.pd-2rem1{padding:2.1rem}
+.pd-2rem2{padding:2.2rem}
+.pd-2rem3{padding:2.3rem}
+.pd-2rem4{padding:2.4rem}
+.pd-2rem5{padding:2.5rem}
+.pd-2rem6{padding:2.6rem}
+.pd-2rem7{padding:2.7rem}
+.pd-2rem8{padding:2.8rem}
+.pd-2rem9{padding:2.9rem}
+.pd-3rem{padding:3rem}
+.pd-3rem2{padding:3.2rem}
+.pd-3rem4{padding:3.4rem}
+.pd-3rem5{padding:3.5rem}
+.pd-3rem6{padding:3.6rem}
+.pd-3rem8{padding:3.8rem}
+.pd-4rem{padding:4rem}
+.pd-4rem2{padding:4.2rem}
+.pd-4rem4{padding:4.4rem}
+.pd-4rem5{padding:4.5rem}
+.pd-4rem6{padding:4.6rem}
+.pd-4rem8{padding:4.8rem}
+.pd-5rem{padding:5rem}
+.pd-6rem{padding:6rem}
+.pd-7rem{padding:7rem}
+.pd-8rem{padding:8rem}
+.pd-9rem{padding:9rem}
+.pd-xrem{padding:10rem}
+
+.pd-l-0{padding-left:0}
+.pd-l-rem1{padding-left:0.1rem}
+.pd-l-rem2{padding-left:0.2rem}
+.pd-l-rem3{padding-left:0.3rem}
+.pd-l-rem4{padding-left:0.4rem}
+.pd-l-rem5{padding-left:0.5rem}
+.pd-l-rem6{padding-left:0.6rem}
+.pd-l-rem7{padding-left:0.7rem}
+.pd-l-rem8{padding-left:0.8rem}
+.pd-l-rem9{padding-left:0.9rem}
+.pd-l-1rem{padding-left:1rem}
+.pd-l-1rem1{padding-left:1.1rem}
+.pd-l-1rem2{padding-left:1.2rem}
+.pd-l-1rem3{padding-left:1.3rem}
+.pd-l-1rem4{padding-left:1.4rem}
+.pd-l-1rem5{padding-left:1.5rem}
+.pd-l-1rem6{padding-left:1.6rem}
+.pd-l-1rem7{padding-left:1.7rem}
+.pd-l-1rem8{padding-left:1.8rem}
+.pd-l-1rem9{padding-left:1.9rem}
+.pd-l-2rem{padding-left:2rem}
+.pd-l-2rem1{padding-left:2.1rem}
+.pd-l-2rem2{padding-left:2.2rem}
+.pd-l-2rem3{padding-left:2.3rem}
+.pd-l-2rem4{padding-left:2.4rem}
+.pd-l-2rem5{padding-left:2.5rem}
+.pd-l-2rem6{padding-left:2.6rem}
+.pd-l-2rem7{padding-left:2.7rem}
+.pd-l-2rem8{padding-left:2.8rem}
+.pd-l-2rem9{padding-left:2.9rem}
+.pd-l-3rem{padding-left:3rem}
+.pd-l-3rem2{padding-left:3.2rem}
+.pd-l-3rem4{padding-left:3.4rem}
+.pd-l-3rem5{padding-left:3.5rem}
+.pd-l-3rem6{padding-left:3.6rem}
+.pd-l-3rem8{padding-left:3.8rem}
+.pd-l-4rem{padding-left:4rem}
+.pd-l-4rem2{padding-left:4.2rem}
+.pd-l-4rem4{padding-left:4.4rem}
+.pd-l-4rem5{padding-left:4.5rem}
+.pd-l-4rem6{padding-left:4.6rem}
+.pd-l-4rem8{padding-left:4.8rem}
+.pd-l-5rem{padding-left:5rem}
+.pd-l-6rem{padding-left:6rem}
+.pd-l-7rem{padding-left:7rem}
+.pd-l-8rem{padding-left:8rem}
+.pd-l-9rem{padding-left:9rem}
+.pd-l-xrem{padding-left:10rem}
+
+.pd-r-0{padding-right:0}
+.pd-r-rem1{padding-right:0.1rem}
+.pd-r-rem2{padding-right:0.2rem}
+.pd-r-rem3{padding-right:0.3rem}
+.pd-r-rem4{padding-right:0.4rem}
+.pd-r-rem5{padding-right:0.5rem}
+.pd-r-rem6{padding-right:0.6rem}
+.pd-r-rem7{padding-right:0.7rem}
+.pd-r-rem8{padding-right:0.8rem}
+.pd-r-rem9{padding-right:0.9rem}
+.pd-r-1rem{padding-right:1rem}
+.pd-r-1rem1{padding-right:1.1rem}
+.pd-r-1rem2{padding-right:1.2rem}
+.pd-r-1rem3{padding-right:1.3rem}
+.pd-r-1rem4{padding-right:1.4rem}
+.pd-r-1rem5{padding-right:1.5rem}
+.pd-r-1rem6{padding-right:1.6rem}
+.pd-r-1rem7{padding-right:1.7rem}
+.pd-r-1rem8{padding-right:1.8rem}
+.pd-r-1rem9{padding-right:1.9rem}
+.pd-r-2rem{padding-right:2rem}
+.pd-r-2rem1{padding-right:2.1rem}
+.pd-r-2rem2{padding-right:2.2rem}
+.pd-r-2rem3{padding-right:2.3rem}
+.pd-r-2rem4{padding-right:2.4rem}
+.pd-r-2rem5{padding-right:2.5rem}
+.pd-r-2rem6{padding-right:2.6rem}
+.pd-r-2rem7{padding-right:2.7rem}
+.pd-r-2rem8{padding-right:2.8rem}
+.pd-r-2rem9{padding-right:2.9rem}
+.pd-r-3rem{padding-right:3rem}
+.pd-r-3rem2{padding-right:3.2rem}
+.pd-r-3rem4{padding-right:3.4rem}
+.pd-r-3rem5{padding-right:3.5rem}
+.pd-r-3rem6{padding-right:3.6rem}
+.pd-r-3rem8{padding-right:3.8rem}
+.pd-r-4rem{padding-right:4rem}
+.pd-r-4rem2{padding-right:4.2rem}
+.pd-r-4rem4{padding-right:4.4rem}
+.pd-r-4rem5{padding-right:4.5rem}
+.pd-r-4rem6{padding-right:4.6rem}
+.pd-r-4rem8{padding-right:4.8rem}
+.pd-r-5rem{padding-right:5rem}
+.pd-r-6rem{padding-right:6rem}
+.pd-r-7rem{padding-right:7rem}
+.pd-r-8rem{padding-right:8rem}
+.pd-r-9rem{padding-right:9rem}
+.pd-r-xrem{padding-right:10rem}
+
+.pd-t-f{padding-top:100%}
+.pd-t-0{padding-top:0}
+.pd-t-rem1{padding-top:0.1rem}
+.pd-t-rem2{padding-top:0.2rem}
+.pd-t-rem3{padding-top:0.3rem}
+.pd-t-rem4{padding-top:0.4rem}
+.pd-t-rem5{padding-top:0.5rem}
+.pd-t-rem6{padding-top:0.6rem}
+.pd-t-rem7{padding-top:0.7rem}
+.pd-t-rem8{padding-top:0.8rem}
+.pd-t-rem9{padding-top:0.9rem}
+.pd-t-1rem{padding-top:1rem}
+.pd-t-1rem1{padding-top:1.1rem}
+.pd-t-1rem2{padding-top:1.2rem}
+.pd-t-1rem3{padding-top:1.3rem}
+.pd-t-1rem4{padding-top:1.4rem}
+.pd-t-1rem5{padding-top:1.5rem}
+.pd-t-1rem6{padding-top:1.6rem}
+.pd-t-1rem7{padding-top:1.7rem}
+.pd-t-1rem8{padding-top:1.8rem}
+.pd-t-1rem9{padding-top:1.9rem}
+.pd-t-2rem{padding-top:2rem}
+.pd-t-2rem1{padding-top:2.1rem}
+.pd-t-2rem2{padding-top:2.2rem}
+.pd-t-2rem3{padding-top:2.3rem}
+.pd-t-2rem4{padding-top:2.4rem}
+.pd-t-2rem5{padding-top:2.5rem}
+.pd-t-2rem6{padding-top:2.6rem}
+.pd-t-2rem7{padding-top:2.7rem}
+.pd-t-2rem8{padding-top:2.8rem}
+.pd-t-2rem9{padding-top:2.9rem}
+.pd-t-3rem{padding-top:3rem}
+.pd-t-3rem2{padding-top:3.2rem}
+.pd-t-3rem4{padding-top:3.4rem}
+.pd-t-3rem5{padding-top:3.5rem}
+.pd-t-3rem6{padding-top:3.6rem}
+.pd-t-3rem8{padding-top:3.8rem}
+.pd-t-4rem{padding-top:4rem}
+.pd-t-4rem2{padding-top:4.2rem}
+.pd-t-4rem4{padding-top:4.4rem}
+.pd-t-4rem5{padding-top:4.5rem}
+.pd-t-4rem6{padding-top:4.6rem}
+.pd-t-4rem8{padding-top:4.8rem}
+.pd-t-5rem{padding-top:5rem}
+.pd-t-6rem{padding-top:6rem}
+.pd-t-7rem{padding-top:7rem}
+.pd-t-8rem{padding-top:8rem}
+.pd-t-9rem{padding-top:9rem}
+.pd-t-xrem{padding-top:10rem}
+
+.pd-b-0{padding-bottom:0}
+.pd-b-rem1{padding-bottom:0.1rem}
+.pd-b-rem2{padding-bottom:0.2rem}
+.pd-b-rem3{padding-bottom:0.3rem}
+.pd-b-rem4{padding-bottom:0.4rem}
+.pd-b-rem5{padding-bottom:0.5rem}
+.pd-b-rem6{padding-bottom:0.6rem}
+.pd-b-rem7{padding-bottom:0.7rem}
+.pd-b-rem8{padding-bottom:0.8rem}
+.pd-b-rem9{padding-bottom:0.9rem}
+.pd-b-1rem{padding-bottom:1rem}
+.pd-b-1rem1{padding-bottom:1.1rem}
+.pd-b-1rem2{padding-bottom:1.2rem}
+.pd-b-1rem3{padding-bottom:1.3rem}
+.pd-b-1rem4{padding-bottom:1.4rem}
+.pd-b-1rem5{padding-bottom:1.5rem}
+.pd-b-1rem6{padding-bottom:1.6rem}
+.pd-b-1rem7{padding-bottom:1.7rem}
+.pd-b-1rem8{padding-bottom:1.8rem}
+.pd-b-1rem9{padding-bottom:1.9rem}
+.pd-b-2rem{padding-bottom:2rem}
+.pd-b-2rem1{padding-bottom:2.1rem}
+.pd-b-2rem2{padding-bottom:2.2rem}
+.pd-b-2rem3{padding-bottom:2.3rem}
+.pd-b-2rem4{padding-bottom:2.4rem}
+.pd-b-2rem5{padding-bottom:2.5rem}
+.pd-b-2rem6{padding-bottom:2.6rem}
+.pd-b-2rem7{padding-bottom:2.7rem}
+.pd-b-2rem8{padding-bottom:2.8rem}
+.pd-b-2rem9{padding-bottom:2.9rem}
+.pd-b-3rem{padding-bottom:3rem}
+.pd-b-3rem2{padding-bottom:3.2rem}
+.pd-b-3rem4{padding-bottom:3.4rem}
+.pd-b-3rem5{padding-bottom:3.5rem}
+.pd-b-3rem6{padding-bottom:3.6rem}
+.pd-b-3rem8{padding-bottom:3.8rem}
+.pd-b-4rem{padding-bottom:4rem}
+.pd-b-4rem2{padding-bottom:4.2rem}
+.pd-b-4rem4{padding-bottom:4.4rem}
+.pd-b-4rem5{padding-bottom:4.5rem}
+.pd-b-4rem6{padding-bottom:4.6rem}
+.pd-b-4rem8{padding-bottom:4.8rem}
+.pd-b-5rem{padding-bottom:5rem}
+.pd-b-6rem{padding-bottom:6rem}
+.pd-b-7rem{padding-bottom:7rem}
+.pd-b-8rem{padding-bottom:8rem}
+.pd-b-9rem{padding-bottom:9rem}
+.pd-b-xrem{padding-bottom:10rem}
+
+.pd-lr-0{padding-left:0;padding-right:0}
+.pd-lr-rem1{padding-left:0.1rem;padding-right:0.1rem}
+.pd-lr-rem2{padding-left:0.2rem;padding-right:0.2rem}
+.pd-lr-rem3{padding-left:0.3rem;padding-right:0.3rem}
+.pd-lr-rem25{padding-left:0.25rem;padding-right:0.25rem}
+.pd-lr-rem4{padding-left:0.4rem;padding-right:0.4rem}
+.pd-lr-rem5{padding-left:0.5rem;padding-right:0.5rem}
+.pd-lr-rem6{padding-left:0.6rem;padding-right:0.6rem}
+.pd-lr-rem7{padding-left:0.7rem;padding-right:0.7rem}
+.pd-lr-rem8{padding-left:0.8rem;padding-right:0.8rem}
+.pd-lr-rem9{padding-left:0.9rem;padding-right:0.9rem}
+.pd-lr-1rem{padding-left:1rem;padding-right:1rem}
+.pd-lr-1rem1{padding-left:1.1rem;padding-right:1.1rem}
+.pd-lr-1rem2{padding-left:1.2rem;padding-right:1.2rem}
+.pd-lr-1rem3{padding-left:1.3rem;padding-right:1.3rem}
+.pd-lr-1rem4{padding-left:1.4rem;padding-right:1.4rem}
+.pd-lr-1rem5{padding-left:1.5rem;padding-right:1.5rem}
+.pd-lr-1rem6{padding-left:1.6rem;padding-right:1.6rem}
+.pd-lr-1rem7{padding-left:1.7rem;padding-right:1.7rem}
+.pd-lr-1rem8{padding-left:1.8rem;padding-right:1.8rem}
+.pd-lr-1rem9{padding-left:1.9rem;padding-right:1.9rem}
+.pd-lr-2rem{padding-left:2rem;padding-right:2rem}
+.pd-lr-2rem1{padding-left:2.1rem;padding-right:2.1rem}
+.pd-lr-2rem2{padding-left:2.2rem;padding-right:2.2rem}
+.pd-lr-2rem3{padding-left:2.3rem;padding-right:2.3rem}
+.pd-lr-2rem4{padding-left:2.4rem;padding-right:2.4rem}
+.pd-lr-2rem5{padding-left:2.5rem;padding-right:2.5rem}
+.pd-lr-2rem6{padding-left:2.6rem;padding-right:2.6rem}
+.pd-lr-2rem7{padding-left:2.7rem;padding-right:2.7rem}
+.pd-lr-2rem8{padding-left:2.8rem;padding-right:2.8rem}
+.pd-lr-2rem9{padding-left:2.9rem;padding-right:2.9rem}
+.pd-lr-3rem{padding-left:3rem;padding-right:3rem}
+.pd-lr-3rem2{padding-left:3.2rem;padding-right:3.2rem}
+.pd-lr-3rem4{padding-left:3.4rem;padding-right:3.4rem}
+.pd-lr-3rem5{padding-left:3.5rem;padding-right:3.5rem}
+.pd-lr-3rem6{padding-left:3.6rem;padding-right:3.6rem}
+.pd-lr-3rem8{padding-left:3.8rem;padding-right:3.8rem}
+.pd-lr-4rem{padding-left:4rem;padding-right:4rem}
+.pd-lr-4rem2{padding-left:4.2rem;padding-right:4.2rem}
+.pd-lr-4rem4{padding-left:4.4rem;padding-right:4.4rem}
+.pd-lr-4rem5{padding-left:4.5rem;padding-right:4.5rem}
+.pd-lr-4rem6{padding-left:4.6rem;padding-right:4.6rem}
+.pd-lr-4rem8{padding-left:4.8rem;padding-right:4.8rem}
+.pd-lr-5rem{padding-left:5rem;padding-right:5rem}
+.pd-lr-6rem{padding-left:6rem;padding-right:6rem}
+.pd-lr-7rem{padding-left:7rem;padding-right:7rem}
+.pd-lr-8rem{padding-left:8rem;padding-right:8rem}
+.pd-lr-9rem{padding-left:9rem;padding-right:9rem}
+.pd-lr-xrem{padding-left:10rem;padding-right:10rem}
+
+.pd-tb-0{padding-top:0;padding-bottom:0}
+.pd-tb-rem1{padding-top:0.1rem;padding-bottom:0.1rem}
+.pd-tb-rem2{padding-top:0.2rem;padding-bottom:0.2rem}
+.pd-tb-rem3{padding-top:0.3rem;padding-bottom:0.3rem}
+.pd-tb-rem4{padding-top:0.4rem;padding-bottom:0.4rem}
+.pd-tb-rem5{padding-top:0.5rem;padding-bottom:0.5rem}
+.pd-tb-rem6{padding-top:0.6rem;padding-bottom:0.6rem}
+.pd-tb-rem7{padding-top:0.7rem;padding-bottom:0.7rem}
+.pd-tb-rem8{padding-top:0.8rem;padding-bottom:0.8rem}
+.pd-tb-rem9{padding-top:0.9rem;padding-bottom:0.9rem}
+.pd-tb-1rem{padding-top:1rem;padding-bottom:1rem}
+.pd-tb-1rem1{padding-top:1.1rem;padding-bottom:1.1rem}
+.pd-tb-1rem2{padding-top:1.2rem;padding-bottom:1.2rem}
+.pd-tb-1rem3{padding-top:1.3rem;padding-bottom:1.3rem}
+.pd-tb-1rem4{padding-top:1.4rem;padding-bottom:1.4rem}
+.pd-tb-1rem5{padding-top:1.5rem;padding-bottom:1.5rem}
+.pd-tb-1rem6{padding-top:1.6rem;padding-bottom:1.6rem}
+.pd-tb-1rem7{padding-top:1.7rem;padding-bottom:1.7rem}
+.pd-tb-1rem8{padding-top:1.8rem;padding-bottom:1.8rem}
+.pd-tb-1rem9{padding-top:1.9rem;padding-bottom:1.9rem}
+.pd-tb-2rem{padding-top:2rem;padding-bottom:2rem}
+.pd-tb-2rem1{padding-top:2.1rem;padding-bottom:2.1rem}
+.pd-tb-2rem2{padding-top:2.2rem;padding-bottom:2.2rem}
+.pd-tb-2rem3{padding-top:2.3rem;padding-bottom:2.3rem}
+.pd-tb-2rem4{padding-top:2.4rem;padding-bottom:2.4rem}
+.pd-tb-2rem5{padding-top:2.5rem;padding-bottom:2.5rem}
+.pd-tb-2rem6{padding-top:2.6rem;padding-bottom:2.6rem}
+.pd-tb-2rem7{padding-top:2.7rem;padding-bottom:2.7rem}
+.pd-tb-2rem8{padding-top:2.8rem;padding-bottom:2.8rem}
+.pd-tb-2rem9{padding-top:2.9rem;padding-bottom:2.9rem}
+.pd-tb-3rem{padding-top:3rem;padding-bottom:3rem}
+.pd-tb-3rem2{padding-top:3.2rem;padding-bottom:3.2rem}
+.pd-tb-3rem4{padding-top:3.4rem;padding-bottom:3.4rem}
+.pd-tb-3rem5{padding-top:3.5rem;padding-bottom:3.5rem}
+.pd-tb-3rem6{padding-top:3.6rem;padding-bottom:3.6rem}
+.pd-tb-3rem8{padding-top:3.8rem;padding-bottom:3.8rem}
+.pd-tb-4rem{padding-top:4rem;padding-bottom:4rem}
+.pd-tb-4rem2{padding-top:4.2rem;padding-bottom:4.2rem}
+.pd-tb-4rem4{padding-top:4.4rem;padding-bottom:4.4rem}
+.pd-tb-4rem5{padding-top:4.5rem;padding-bottom:4.5rem}
+.pd-tb-4rem6{padding-top:4.6rem;padding-bottom:4.6rem}
+.pd-tb-4rem8{padding-top:4.8rem;padding-bottom:4.8rem}
+.pd-tb-5rem{padding-top:5rem;padding-bottom:5rem}
+.pd-tb-6rem{padding-top:6rem;padding-bottom:6rem}
+.pd-tb-7rem{padding-top:7rem;padding-bottom:7rem}
+.pd-tb-8rem{padding-top:8rem;padding-bottom:8rem}
+.pd-tb-9rem{padding-top:9rem;padding-bottom:9rem}
+.pd-tb-xrem{padding-top:10rem;padding-bottom:10rem}
+
+.mg-0{margin:0}
+.mg-0x{margin:0 !important}
+.mg-rem1{margin:0.1rem} /* 0rem1 省略前缀0，下同 */
+.mg-rem2{margin:0.2rem}
+.mg-rem3{margin:0.3rem}
+.mg-rem4{margin:0.4rem}
+.mg-rem5{margin:0.5rem}
+.mg-rem6{margin:0.6rem}
+.mg-rem7{margin:0.7rem}
+.mg-rem8{margin:0.8rem}
+.mg-rem9{margin:0.9rem}
+.mg-1rem{margin:1rem}
+.mg-1rem1{margin:1.1rem}
+.mg-1rem2{margin:1.2rem}
+.mg-1rem3{margin:1.3rem}
+.mg-1rem4{margin:1.4rem}
+.mg-1rem5{margin:1.5rem}
+.mg-1rem6{margin:1.6rem}
+.mg-1rem7{margin:1.7rem}
+.mg-1rem8{margin:1.8rem}
+.mg-1rem9{margin:1.9rem}
+.mg-2rem{margin:2rem}
+.mg-2rem1{margin:2.1rem}
+.mg-2rem2{margin:2.2rem}
+.mg-2rem3{margin:2.3rem}
+.mg-2rem4{margin:2.4rem}
+.mg-2rem5{margin:2.5rem}
+.mg-2rem6{margin:2.6rem}
+.mg-2rem7{margin:2.7rem}
+.mg-2rem8{margin:2.8rem}
+.mg-2rem9{margin:2.9rem}
+.mg-3rem{margin:3rem}
+.mg-3rem2{margin:3.2rem}
+.mg-3rem4{margin:3.4rem}
+.mg-3rem5{margin:3.5rem}
+.mg-3rem6{margin:3.6rem}
+.mg-3rem8{margin:3.8rem}
+.mg-4rem{margin:4rem}
+.mg-4rem2{margin:4.2rem}
+.mg-4rem4{margin:4.4rem}
+.mg-4rem5{margin:4.5rem}
+.mg-4rem6{margin:4.6rem}
+.mg-4rem8{margin:4.8rem}
+.mg-5rem{margin:5rem}
+.mg-6rem{margin:6rem}
+.mg-7rem{margin:7rem}
+.mg-8rem{margin:8rem}
+.mg-9rem{margin:9rem}
+.mg-xrem{margin:10rem}
+
+.mg-l-0{margin-left:0}
+.mg-l-rem1{margin-left:0.1rem}
+.mg-l-rem2{margin-left:0.2rem}
+.mg-l-rem3{margin-left:0.3rem}
+.mg-l-rem4{margin-left:0.4rem}
+.mg-l-rem5{margin-left:0.5rem}
+.mg-l-rem6{margin-left:0.6rem}
+.mg-l-rem7{margin-left:0.7rem}
+.mg-l-rem8{margin-left:0.8rem}
+.mg-l-rem9{margin-left:0.9rem}
+.mg-l-1rem{margin-left:1rem}
+.mg-l-1rem1{margin-left:1.1rem}
+.mg-l-1rem2{margin-left:1.2rem}
+.mg-l-1rem3{margin-left:1.3rem}
+.mg-l-1rem4{margin-left:1.4rem}
+.mg-l-1rem5{margin-left:1.5rem}
+.mg-l-1rem6{margin-left:1.6rem}
+.mg-l-1rem7{margin-left:1.7rem}
+.mg-l-1rem8{margin-left:1.8rem}
+.mg-l-1rem9{margin-left:1.9rem}
+.mg-l-2rem{margin-left:2rem}
+.mg-l-2rem1{margin-left:2.1rem}
+.mg-l-2rem2{margin-left:2.2rem}
+.mg-l-2rem3{margin-left:2.3rem}
+.mg-l-2rem4{margin-left:2.4rem}
+.mg-l-2rem5{margin-left:2.5rem}
+.mg-l-2rem6{margin-left:2.6rem}
+.mg-l-2rem7{margin-left:2.7rem}
+.mg-l-2rem8{margin-left:2.8rem}
+.mg-l-2rem9{margin-left:2.9rem}
+.mg-l-3rem{margin-left:3rem}
+.mg-l-3rem2{margin-left:3.2rem}
+.mg-l-3rem4{margin-left:3.4rem}
+.mg-l-3rem5{margin-left:3.5rem}
+.mg-l-3rem6{margin-left:3.6rem}
+.mg-l-3rem8{margin-left:3.8rem}
+.mg-l-4rem{margin-left:4rem}
+.mg-l-4rem2{margin-left:4.2rem}
+.mg-l-4rem4{margin-left:4.4rem}
+.mg-l-4rem5{margin-left:4.5rem}
+.mg-l-4rem6{margin-left:4.6rem}
+.mg-l-4rem8{margin-left:4.8rem}
+.mg-l-5rem{margin-left:5rem}
+.mg-l-6rem{margin-left:6rem}
+.mg-l-7rem{margin-left:7rem}
+.mg-l-8rem{margin-left:8rem}
+.mg-l-9rem{margin-left:9rem}
+.mg-l-xrem{margin-left:10rem}
+
+.mg-r-0{margin-right:0}
+.mg-r-rem1{margin-right:0.1rem}
+.mg-r-rem2{margin-right:0.2rem}
+.mg-r-rem3{margin-right:0.3rem}
+.mg-r-rem4{margin-right:0.4rem}
+.mg-r-rem5{margin-right:0.5rem}
+.mg-r-rem6{margin-right:0.6rem}
+.mg-r-rem7{margin-right:0.7rem}
+.mg-r-rem8{margin-right:0.8rem}
+.mg-r-rem9{margin-right:0.9rem}
+.mg-r-1rem{margin-right:1rem}
+.mg-r-1rem1{margin-right:1.1rem}
+.mg-r-1rem2{margin-right:1.2rem}
+.mg-r-1rem3{margin-right:1.3rem}
+.mg-r-1rem4{margin-right:1.4rem}
+.mg-r-1rem5{margin-right:1.5rem}
+.mg-r-1rem6{margin-right:1.6rem}
+.mg-r-1rem7{margin-right:1.7rem}
+.mg-r-1rem8{margin-right:1.8rem}
+.mg-r-1rem9{margin-right:1.9rem}
+.mg-r-2rem{margin-right:2rem}
+.mg-r-2rem1{margin-right:2.1rem}
+.mg-r-2rem2{margin-right:2.2rem}
+.mg-r-2rem3{margin-right:2.3rem}
+.mg-r-2rem4{margin-right:2.4rem}
+.mg-r-2rem5{margin-right:2.5rem}
+.mg-r-2rem6{margin-right:2.6rem}
+.mg-r-2rem7{margin-right:2.7rem}
+.mg-r-2rem8{margin-right:2.8rem}
+.mg-r-2rem9{margin-right:2.9rem}
+.mg-r-3rem{margin-right:3rem}
+.mg-r-3rem2{margin-right:3.2rem}
+.mg-r-3rem4{margin-right:3.4rem}
+.mg-r-3rem5{margin-right:3.5rem}
+.mg-r-3rem6{margin-right:3.6rem}
+.mg-r-3rem8{margin-right:3.8rem}
+.mg-r-4rem{margin-right:4rem}
+.mg-r-4rem2{margin-right:4.2rem}
+.mg-r-4rem4{margin-right:4.4rem}
+.mg-r-4rem5{margin-right:4.5rem}
+.mg-r-4rem6{margin-right:4.6rem}
+.mg-r-4rem8{margin-right:4.8rem}
+.mg-r-5rem{margin-right:5rem}
+.mg-r-6rem{margin-right:6rem}
+.mg-r-7rem{margin-right:7rem}
+.mg-r-8rem{margin-right:8rem}
+.mg-r-9rem{margin-right:9rem}
+.mg-r-xrem{margin-right:10rem}
+
+.mg-t-0{margin-top:0}
+.mg-t-rem1{margin-top:0.1rem}
+.mg-t-rem2{margin-top:0.2rem}
+.mg-t-rem3{margin-top:0.3rem}
+.mg-t-rem4{margin-top:0.4rem}
+.mg-t-rem5{margin-top:0.5rem}
+.mg-t-rem6{margin-top:0.6rem}
+.mg-t-rem7{margin-top:0.7rem}
+.mg-t-rem8{margin-top:0.8rem}
+.mg-t-rem9{margin-top:0.9rem}
+.mg-t-1rem{margin-top:1rem}
+.mg-t-1rem1{margin-top:1.1rem}
+.mg-t-1rem2{margin-top:1.2rem}
+.mg-t-1rem3{margin-top:1.3rem}
+.mg-t-1rem4{margin-top:1.4rem}
+.mg-t-1rem5{margin-top:1.5rem}
+.mg-t-1rem6{margin-top:1.6rem}
+.mg-t-1rem7{margin-top:1.7rem}
+.mg-t-1rem8{margin-top:1.8rem}
+.mg-t-1rem9{margin-top:1.9rem}
+.mg-t-2rem{margin-top:2rem}
+.mg-t-2rem1{margin-top:2.1rem}
+.mg-t-2rem2{margin-top:2.2rem}
+.mg-t-2rem3{margin-top:2.3rem}
+.mg-t-2rem4{margin-top:2.4rem}
+.mg-t-2rem5{margin-top:2.5rem}
+.mg-t-2rem6{margin-top:2.6rem}
+.mg-t-2rem7{margin-top:2.7rem}
+.mg-t-2rem8{margin-top:2.8rem}
+.mg-t-2rem9{margin-top:2.9rem}
+.mg-t-3rem{margin-top:3rem}
+.mg-t-3rem2{margin-top:3.2rem}
+.mg-t-3rem4{margin-top:3.4rem}
+.mg-t-3rem5{margin-top:3.5rem}
+.mg-t-3rem6{margin-top:3.6rem}
+.mg-t-3rem8{margin-top:3.8rem}
+.mg-t-4rem{margin-top:4rem}
+.mg-t-4rem2{margin-top:4.2rem}
+.mg-t-4rem4{margin-top:4.4rem}
+.mg-t-4rem5{margin-top:4.5rem}
+.mg-t-4rem6{margin-top:4.6rem}
+.mg-t-4rem8{margin-top:4.8rem}
+.mg-t-5rem{margin-top:5rem}
+.mg-t-6rem{margin-top:6rem}
+.mg-t-7rem{margin-top:7rem}
+.mg-t-8rem{margin-top:8rem}
+.mg-t-9rem{margin-top:9rem}
+.mg-t-xrem{margin-top:10rem}
+
+.mg-b-0{margin-bottom:0}
+.mg-b-rem1{margin-bottom:0.1rem}
+.mg-b-rem2{margin-bottom:0.2rem}
+.mg-b-rem3{margin-bottom:0.3rem}
+.mg-b-rem4{margin-bottom:0.4rem}
+.mg-b-rem5{margin-bottom:0.5rem}
+.mg-b-rem6{margin-bottom:0.6rem}
+.mg-b-rem7{margin-bottom:0.7rem}
+.mg-b-rem8{margin-bottom:0.8rem}
+.mg-b-rem9{margin-bottom:0.9rem}
+.mg-b-1rem{margin-bottom:1rem}
+.mg-b-1rem1{margin-bottom:1.1rem}
+.mg-b-1rem2{margin-bottom:1.2rem}
+.mg-b-1rem3{margin-bottom:1.3rem}
+.mg-b-1rem4{margin-bottom:1.4rem}
+.mg-b-1rem5{margin-bottom:1.5rem}
+.mg-b-1rem6{margin-bottom:1.6rem}
+.mg-b-1rem7{margin-bottom:1.7rem}
+.mg-b-1rem8{margin-bottom:1.8rem}
+.mg-b-1rem9{margin-bottom:1.9rem}
+.mg-b-2rem{margin-bottom:2rem}
+.mg-b-2rem1{margin-bottom:2.1rem}
+.mg-b-2rem2{margin-bottom:2.2rem}
+.mg-b-2rem3{margin-bottom:2.3rem}
+.mg-b-2rem4{margin-bottom:2.4rem}
+.mg-b-2rem5{margin-bottom:2.5rem}
+.mg-b-2rem6{margin-bottom:2.6rem}
+.mg-b-2rem7{margin-bottom:2.7rem}
+.mg-b-2rem8{margin-bottom:2.8rem}
+.mg-b-2rem9{margin-bottom:2.9rem}
+.mg-b-3rem{margin-bottom:3rem}
+.mg-b-3rem2{margin-bottom:3.2rem}
+.mg-b-3rem4{margin-bottom:3.4rem}
+.mg-b-3rem5{margin-bottom:3.5rem}
+.mg-b-3rem6{margin-bottom:3.6rem}
+.mg-b-3rem8{margin-bottom:3.8rem}
+.mg-b-4rem{margin-bottom:4rem}
+.mg-b-4rem2{margin-bottom:4.2rem}
+.mg-b-4rem4{margin-bottom:4.4rem}
+.mg-b-4rem5{margin-bottom:4.5rem}
+.mg-b-4rem6{margin-bottom:4.6rem}
+.mg-b-4rem8{margin-bottom:4.8rem}
+.mg-b-5rem{margin-bottom:5rem}
+.mg-b-6rem{margin-bottom:6rem}
+.mg-b-7rem{margin-bottom:7rem}
+.mg-b-8rem{margin-bottom:8rem}
+.mg-b-9rem{margin-bottom:9rem}
+.mg-b-xrem{margin-bottom:10rem}
+
+.mg-lr-a{margin-left:auto;margin-right:auto}
+.mg-lr-0{margin-left:0;margin-right:0}
+.mg-lr-rem1{margin-left:0.1rem;margin-right:0.1rem}
+.mg-lr-rem2{margin-left:0.2rem;margin-right:0.2rem}
+.mg-lr-rem3{margin-left:0.3rem;margin-right:0.3rem}
+.mg-lr-rem4{margin-left:0.4rem;margin-right:0.4rem}
+.mg-lr-rem5{margin-left:0.5rem;margin-right:0.5rem}
+.mg-lr-rem6{margin-left:0.6rem;margin-right:0.6rem}
+.mg-lr-rem7{margin-left:0.7rem;margin-right:0.7rem}
+.mg-lr-rem8{margin-left:0.8rem;margin-right:0.8rem}
+.mg-lr-rem9{margin-left:0.9rem;margin-right:0.9rem}
+.mg-lr-1rem{margin-left:1rem;margin-right:1rem}
+.mg-lr-1rem1{margin-left:1.1rem;margin-right:1.1rem}
+.mg-lr-1rem2{margin-left:1.2rem;margin-right:1.2rem}
+.mg-lr-1rem3{margin-left:1.3rem;margin-right:1.3rem}
+.mg-lr-1rem4{margin-left:1.4rem;margin-right:1.4rem}
+.mg-lr-1rem5{margin-left:1.5rem;margin-right:1.5rem}
+.mg-lr-1rem6{margin-left:1.6rem;margin-right:1.6rem}
+.mg-lr-1rem7{margin-left:1.7rem;margin-right:1.7rem}
+.mg-lr-1rem8{margin-left:1.8rem;margin-right:1.8rem}
+.mg-lr-1rem9{margin-left:1.9rem;margin-right:1.9rem}
+.mg-lr-2rem{margin-left:2rem;margin-right:2rem}
+.mg-lr-2rem1{margin-left:2.1rem;margin-right:2.1rem}
+.mg-lr-2rem2{margin-left:2.2rem;margin-right:2.2rem}
+.mg-lr-2rem3{margin-left:2.3rem;margin-right:2.3rem}
+.mg-lr-2rem4{margin-left:2.4rem;margin-right:2.4rem}
+.mg-lr-2rem5{margin-left:2.5rem;margin-right:2.5rem}
+.mg-lr-2rem6{margin-left:2.6rem;margin-right:2.6rem}
+.mg-lr-2rem7{margin-left:2.7rem;margin-right:2.7rem}
+.mg-lr-2rem8{margin-left:2.8rem;margin-right:2.8rem}
+.mg-lr-2rem9{margin-left:2.9rem;margin-right:2.9rem}
+.mg-lr-3rem{margin-left:3rem;margin-right:3rem}
+.mg-lr-3rem2{margin-left:3.2rem;margin-right:3.2rem}
+.mg-lr-3rem4{margin-left:3.4rem;margin-right:3.4rem}
+.mg-lr-3rem5{margin-left:3.5rem;margin-right:3.5rem}
+.mg-lr-3rem6{margin-left:3.6rem;margin-right:3.6rem}
+.mg-lr-3rem8{margin-left:3.8rem;margin-right:3.8rem}
+.mg-lr-4rem{margin-left:4rem;margin-right:4rem}
+.mg-lr-4rem2{margin-left:4.2rem;margin-right:4.2rem}
+.mg-lr-4rem4{margin-left:4.4rem;margin-right:4.4rem}
+.mg-lr-4rem5{margin-left:4.5rem;margin-right:4.5rem}
+.mg-lr-4rem6{margin-left:4.6rem;margin-right:4.6rem}
+.mg-lr-4rem8{margin-left:4.8rem;margin-right:4.8rem}
+.mg-lr-5rem{margin-left:5rem;margin-right:5rem}
+.mg-lr-6rem{margin-left:6rem;margin-right:6rem}
+.mg-lr-7rem{margin-left:7rem;margin-right:7rem}
+.mg-lr-8rem{margin-left:8rem;margin-right:8rem}
+.mg-lr-9rem{margin-left:9rem;margin-right:9rem}
+.mg-lr-xrem{margin-left:10rem;margin-right:10rem}
+
+.mg-tb-0{margin-top:0;margin-bottom:0}
+.mg-tb-rem1{margin-top:0.1rem;margin-bottom:0.1rem}
+.mg-tb-rem2{margin-top:0.2rem;margin-bottom:0.2rem}
+.mg-tb-rem3{margin-top:0.3rem;margin-bottom:0.3rem}
+.mg-tb-rem4{margin-top:0.4rem;margin-bottom:0.4rem}
+.mg-tb-rem5{margin-top:0.5rem;margin-bottom:0.5rem}
+.mg-tb-rem6{margin-top:0.6rem;margin-bottom:0.6rem}
+.mg-tb-rem7{margin-top:0.7rem;margin-bottom:0.7rem}
+.mg-tb-rem8{margin-top:0.8rem;margin-bottom:0.8rem}
+.mg-tb-rem9{margin-top:0.9rem;margin-bottom:0.9rem}
+.mg-tb-1rem{margin-top:1rem;margin-bottom:1rem}
+.mg-tb-1rem1{margin-top:1.1rem;margin-bottom:1.1rem}
+.mg-tb-1rem2{margin-top:1.2rem;margin-bottom:1.2rem}
+.mg-tb-1rem3{margin-top:1.3rem;margin-bottom:1.3rem}
+.mg-tb-1rem4{margin-top:1.4rem;margin-bottom:1.4rem}
+.mg-tb-1rem5{margin-top:1.5rem;margin-bottom:1.5rem}
+.mg-tb-1rem6{margin-top:1.6rem;margin-bottom:1.6rem}
+.mg-tb-1rem7{margin-top:1.7rem;margin-bottom:1.7rem}
+.mg-tb-1rem8{margin-top:1.8rem;margin-bottom:1.8rem}
+.mg-tb-1rem9{margin-top:1.9rem;margin-bottom:1.9rem}
+.mg-tb-2rem{margin-top:2rem;margin-bottom:2rem}
+.mg-tb-2rem1{margin-top:2.1rem;margin-bottom:2.1rem}
+.mg-tb-2rem2{margin-top:2.2rem;margin-bottom:2.2rem}
+.mg-tb-2rem3{margin-top:2.3rem;margin-bottom:2.3rem}
+.mg-tb-2rem4{margin-top:2.4rem;margin-bottom:2.4rem}
+.mg-tb-2rem5{margin-top:2.5rem;margin-bottom:2.5rem}
+.mg-tb-2rem6{margin-top:2.6rem;margin-bottom:2.6rem}
+.mg-tb-2rem7{margin-top:2.7rem;margin-bottom:2.7rem}
+.mg-tb-2rem8{margin-top:2.8rem;margin-bottom:2.8rem}
+.mg-tb-2rem9{margin-top:2.9rem;margin-bottom:2.9rem}
+.mg-tb-3rem{margin-top:3rem;margin-bottom:3rem}
+.mg-tb-3rem2{margin-top:3.2rem;margin-bottom:3.2rem}
+.mg-tb-3rem4{margin-top:3.4rem;margin-bottom:3.4rem}
+.mg-tb-3rem5{margin-top:3.5rem;margin-bottom:3.5rem}
+.mg-tb-3rem6{margin-top:3.6rem;margin-bottom:3.6rem}
+.mg-tb-3rem8{margin-top:3.8rem;margin-bottom:3.8rem}
+.mg-tb-4rem{margin-top:4rem;margin-bottom:4rem}
+.mg-tb-4rem2{margin-top:4.2rem;margin-bottom:4.2rem}
+.mg-tb-4rem4{margin-top:4.4rem;margin-bottom:4.4rem}
+.mg-tb-4rem5{margin-top:4.5rem;margin-bottom:4.5rem}
+.mg-tb-4rem6{margin-top:4.6rem;margin-bottom:4.6rem}
+.mg-tb-4rem8{margin-top:4.8rem;margin-bottom:4.8rem}
+.mg-tb-5rem{margin-top:5rem;margin-bottom:5rem}
+.mg-tb-6rem{margin-top:6rem;margin-bottom:6rem}
+.mg-tb-7rem{margin-top:7rem;margin-bottom:7rem}
+.mg-tb-8rem{margin-top:8rem;margin-bottom:8rem}
+.mg-tb-9rem{margin-top:9rem;margin-bottom:9rem}
+.mg-tb-xrem{margin-top:10rem;margin-bottom:10rem}

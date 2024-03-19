@@ -1,0 +1,37 @@
+/* 地图，选择位置 */
+@keyframes map-pin-updown{
+	0%{transform: translateY(0px);}
+	50%{transform: translateY(-20px);}
+	100%{transform: translateY(0px);}
+}
+.map-wrap-box{
+	width: 100%;
+	height: 60vh;
+	position: relative;
+	background-color: #f0f0f0;
+	transition: height 0.25s;
+}
+.map-bottom-box{
+	padding: 0;
+	width: 100%;
+	position: relative;
+}
+
+.map-pin-icon{
+	position: absolute;
+	left: 50%;
+	left: calc(50% - 20px);
+	bottom: 50%;
+	width: 40px;
+	height: 40px;
+}
+.map-pin-icon.updown{
+	animation-fill-mode:forwards;
+	animation: map-pin-updown 1s ease 0s 1 normal;
+}
+
+.poi-checked-icon{
+	width: 28px;
+	height: 28px;
+	vertical-align: middle;
+}

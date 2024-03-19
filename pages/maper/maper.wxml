@@ -1,0 +1,75 @@
+<!-- 地图，选择位置 -->
+<view class="fx-c hi-s">
+	<view class="map-wrap-box" style="height:{{mapWrapHeight}}vh">
+		<map 
+			id="maper"
+			class="wi-f hi-f"
+			latitude="{{mapLat}}"
+			longitude="{{mapLng}}"
+			scale="16"
+			show-location="{{true}}"
+			bindregionchange="mapPinUpDown"
+		></map>
+		<cover-image 
+			class="map-pin-icon {{mapPinUpDowning ? 'updown' : ''}}" 
+			src="../../images/map_pin.png">
+		</cover-image>
+	</view>
+	<view bindtouchstart="onBottomTouchXxoo" bindtouchmove="onBottomTouchXxoo" class="fx-g1 fx-c map-bottom-box">
+		<view class="pd-lr-1rem pd-tb-rem5 ps-r po-t-0 bg-ff">
+			<text class="dp-ib fa fa-search tc-99 ps-a po-t-c" style="left:2rem"></text>
+			<input class="wi-f pd-tb-rem5 ta-c bg-f0 br-x0" 
+				cursor-spacing="20" 
+				bindinput="onSearchPlace" 
+				bindfocus="onInputFocus"
+				type="text" 
+				placeholder="搜索地点" />
+		</view>
+		<!--view class="fx-hc pd-lr-1rem">
+			<view class="fx-g1">
+				<block wx:if="{{mapPlace}}">
+					<view>{{mapPlace}}</view>
+					<view class="fs-rem8 tc-99 pd-t-rem3">{{mapAddress}}</view>
+				</block>
+				<block wx:else>
+					<view>{{mapAddress}}</view>
+				</block>
+			</view>
+			<view wx:if="{{!isViewMode}}" class="pd-l-1rem">
+				<button bindtap="mapAddressDone" class="bg-mc tc-ff wi-ax">确定</button>
+			</view>
+		</view-->
+		<block wx:if="{{mapGeocoding}}">
+			<view class="fx-g1 fx-r fx-mc">
+				<text class="tc-aa fa fa-circle-o-notch fa-spin fs-3rem"><!--正在加载--></text>
+			</view>
+		</block>
+		<block wx:else >
+			<view wx:if="{{!mapPoisList.length}}" class="fx-g1 fx-r fx-mc">
+				<text class="tc-aa">无法获取地点信息</text>
+			</view>
+			<scroll-view wx:else throttle="{{false}}" scroll-y="{{mapWrapHeight !== 60}}" bindscroll="onBottomTouchXxoo" class="fx-g1 of-a">
+				<view wx:for="{{mapPoisList}}" wx:key="id" class="fx-hc tp-dim" bindtap="poisItemTap" data-nth="{{index}}">
+					<view class="pd-tb-rem5 pd-l-1rem fx-g1">
+						<view class="{{mapPoisIndex===index ? 'tc-g0' : 'tc-00'}}">{{item.title}}</view>
+						<view class="fs-rem8 {{mapPoisIndex===index ? 'tc-g0 op-6' : 'tc-99'}}">{{item.distance}} | {{item.address}}</view>
+					</view>
+					<view class="pd-lr-1rem {{mapPoisIndex===index ? '' : 'op-h'}}">
+						<image class="poi-checked-icon" src="../../images/check_icon2.svg"></image>
+					</view> 
+				</view>
+				<view class="pd-tb-1rem tc-mc ta-c fs-rem8 tp-dim" bindtap="gotoInputer">
+					<text class="tc-99">到底了... 没有找到想要的地址？</text>
+					<text decode class="tc-mc">手动输入&nbsp;</text>
+					<text class="fa fa-angle-double-right tc-mc"></text>
+				</view>
+			</scroll-view>
+			<view wx:if="{{mapPoisList.length}}" class="pd-tb-rem5 pd-lr-1rem">
+				<button bindtap="mapAddressDone" class="bg-mc tc-ff wi-ax">确 定</button>
+			</view>
+			<view wx:else class="pd-tb-rem5 pd-lr-1rem">
+				<button bindtap="gotoInputer" class="bg-mc tc-ff wi-ax">手动输入地址</button>
+			</view>
+		</block>
+	</view>
+</view>

@@ -1,0 +1,12 @@
+.img-container{
+	text-align: center;
+}
+.img-box{
+	display: inline-block;
+	width: 128px;
+	height: 128px;
+	vertical-align: middle;
+}
+.img-text{
+	color: #ccc;
+}

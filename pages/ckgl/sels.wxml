@@ -1,0 +1,29 @@
+<!-- 地址选择 -->
+<view class="pd-rem5 hi-s fx-c bg-f0">
+	<view class="fx-g1">
+		<block wx:if="{{!ckdzInfo.jhbAddresses}}">
+			<view class="ta-c tc-99 pd-2rem">正在加载...</view>
+		</block>
+		<block wx:elif="{{!ckdzInfo.jhbAddresses.length}}">
+			<view class="ta-c tc-99 pd-2rem">暂无数据</view>
+		</block>
+		<block wx:else>
+			<view wx:for="{{ckdzInfo.jhbAddresses}}" wx:key="jaid"
+				class="fx-hc pd-1rem mg-b-rem5 br-10 bg-ff tp-dim"
+				bindtap="selectCk" 
+				data-nth="{{index}}">
+				<view class="fx-g1">
+					<view>{{item.warehouseName}}</view>
+					<view class="tc-99 fa fa-map-marker fs-rem8"> {{item.address}}</view>
+				</view>
+				<view wx:if="{{item.jaid == selectedJaID}}" class="ta-c pd-l-rem5">
+					<image class="row-check-icon" src="../../images/check_icon2.svg"></image>
+					<view class="tc-g0 fs-rem8">已选</view>
+				</view>
+			</view>
+		</block>
+	</view>
+	<view class="pd-tb-1rem" style="display:none;"><!-- 暂时不显示 -->
+		<button class="bg-mc tc-ff pd-tb-rem7 wi-fx" bindtap="gotoXzdz">新增地址</button>
+	</view>
+</view>

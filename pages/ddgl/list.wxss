@@ -1,0 +1,30 @@
+/* 订单列表 */
+
+.search-box-focus > input{
+	transition: all 0.5s;
+	border:1px solid var(--main-color);
+	color: var(--main-color);
+}
+
+.search-box-focus > .fa-search{
+	color: var(--main-color);
+}
+
+.tab-box{
+	padding-bottom: 0.1rem;
+	position: relative;
+	padding: 0.5rem 0;
+}
+.tab-box.actvited{
+	color: var(--main-color);
+}
+.tab-box.actvited::after{
+	content: "";
+	display: block;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	border-bottom: 2px solid;
+}

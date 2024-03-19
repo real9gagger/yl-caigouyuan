@@ -1,0 +1,27 @@
+<!-- 仓库列表 -->
+<view class="pd-rem5 fx-c hi-s bg-f0 of-a">
+	<view class="fx-g1">
+		<block wx:if="{{!ckdzInfo.jhbAddresses}}">
+			<view class="ta-c tc-99 pd-2rem">正在加载...</view>
+		</block>
+		<block wx:elif="{{!ckdzInfo.jhbAddresses.length}}">
+			<view class="ta-c tc-99 pd-2rem">暂无数据</view>
+		</block>
+		<block wx:else>
+			<view wx:for="{{ckdzInfo.jhbAddresses}}" wx:key="jaid" class="pd-1rem mg-b-rem5 br-10 bg-ff tp-dim" bindtap="editCkInfo" data-nth="{{index}}">
+				<view>
+					<view class="fx-hc">
+						<text class="fx-g1">{{item.warehouseName}}</text>
+						<text class="fa fa-angle-right pd-l-1rem tc-cc"></text>
+					</view>
+					<view class="tc-99 fs-rem8"><text class="fa fa-user item-icon-box"></text>{{item.name || "[仓库管理员]"}}</view>
+					<view class="tc-99 fs-rem8"><text class="fa fa-phone item-icon-box"></text>{{item.phone}}</view>
+					<view class="tc-99 fs-rem8"><text class="fa fa-map-marker item-icon-box" style="padding-left:1px"></text>{{item.address}}</view>
+				</view>
+			</view>
+		</block>
+	</view>
+	<view class="pd-t-rem5">
+		<button class="bg-mc tc-ff pd-tb-rem7 wi-fx" bindtap="gotoXzdz">新增地址</button>
+	</view>
+</view>

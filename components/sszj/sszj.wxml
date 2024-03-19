@@ -1,0 +1,19 @@
+<!-- 搜索组件 -->
+<view id="page_top_search_box" 
+	  class="fx-hc ps-r search-box-container {{isSearchFocus ? 'search-box-focus' : ''}}"
+	  style="{{searchBoxStyle}}">
+	<view class="fa fa-search ps-a po-t-c po-l-0 pd-tb-rem5 pd-lr-1rem tc-99"></view>
+	<input 
+		id="page_search_input_box"
+		type="text" 
+		class="fx-g1 pd-rem5 br-30 ta-c bg-ff bd-ff"
+		placeholder="{{placeHolder}}"
+		model:value="{{searchKeywords}}"
+		placeholder-class="ph-css"
+		bindinput="onInputInputing"
+		bindblur="onInputBlur"
+		bindfocus="onInputFocus"
+		adjust-position="{{false}}"
+		style="transition: all 0.5s"></input>
+	<view class="search-btn-box">{{sbtnText}}</view>
+</view>

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "dbzj-box": "/components/dbzj/dbzj"
+  },
+  "navigationBarTitleText":"采购下单",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#f0f0f0",
+  "backgroundTextStyle": "dark"
+}

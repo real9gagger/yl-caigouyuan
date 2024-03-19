@@ -1,0 +1,48 @@
+/* 价格区间组件 */
+@keyframes ranges-mask-ani{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+
+@keyframes ranges-wraper-ani{
+	0%{
+		opacity: 0;
+		transform: translateY(-100%);
+	}
+	100%{
+		opacity: 1;
+		transform: translateY(0%);
+	}
+}
+.price-ranges-mask{
+	animation: ranges-mask-ani 0.25s ease 0s 1 normal forwards;
+}
+
+.price-ranges-wraper{
+	animation: ranges-wraper-ani 0.25s ease 0s 1 normal forwards;
+}
+.price-ranges-box{
+	display: inline-box;
+	border: 1px solid #1ba4f0;
+	color: #1ba4f0;
+	border-radius: 30px;
+	padding: 0.5rem 1rem;
+	font-size: 14px;
+	text-align: center;
+}
+.price-ranges-box.checked{
+	background-color: #1ba4f0;
+	color: #fff;
+}
+
+.price-ranges-input{
+	border: 1px solid #666;
+	padding: 0.5rem;
+	border-radius: 30px;
+	text-align: center;
+	font-size: 14px;
+}

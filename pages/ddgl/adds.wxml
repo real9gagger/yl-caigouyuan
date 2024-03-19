@@ -1,0 +1,111 @@
+<!--采购主页 -->
+<view class="pd-rem5 bg-f0">
+	<view class="content-box">
+		<view class="fx-hc pd-tb-1rem bd-b-f0 ontap-light" bindtap="gotoXqjzSelect">
+			<view class="fhr-icon">发</view>
+			<view wx:if="{{!fhfInfos.xqjzID}}" class="pd-l-1rem fx-g1 bd-r-f0">
+				<view class="fw-b">发件人信息</view>
+				<view class="tc-99 pd-t-rem2 fs-12px">请选择发件人</view>
+			</view>
+			<view wx:else class="pd-l-1rem fx-g1 bd-r-f0">
+				<view class="fw-b">{{fhfInfos.xqjzName}} [{{fhfInfos.deviceName || "X001"}}]</view>
+				<view class="tc-66 pd-t-rem2 fs-12px">{{fhfInfos.xqjAddress}}</view>
+			</view>
+			<view class="mg-l-1rem pd-tb-rem5 tc-66">地址簿 <text class="fa fa-angle-right tc-99"></text></view>
+		</view>
+
+		<view class="fx-hc pd-tb-1rem ontap-light" bindtap="gotoCkdzSelect">
+			<view class="shr-icon">收</view>
+			<view wx:if="{{!shfInfos.ckID}}" class="pd-l-1rem fx-g1 bd-r-f0">
+				<view class="fw-b">收件人信息</view>
+				<view class="tc-99 pd-t-rem2 fs-12px">请选择收件人</view>
+			</view>
+			<view wx:else class="pd-l-1rem fx-g1 bd-r-f0">
+				<view class="fw-b">{{shfInfos.jhbcName}} [{{shfInfos.ckName}}]</view>
+				<view class="tc-66 pd-t-rem2 fs-12px">{{shfInfos.ckAddress}}</view>
+			</view>
+			<view class="mg-l-1rem pd-tb-rem5 tc-66">地址簿 <text class="fa fa-angle-right tc-99"></text></view>
+		</view>
+	</view>
+
+	<view class="content-box">
+		<view class="fx-hc pd-tb-1rem ontap-light" bindtap="gotoTjhw">
+			<text class="fx-g1 fw-bxo">货物信息</text>
+			<text class="bg-tp fa fa-plus"> 添加货物</text>
+			<text class="fa fa-angle-right pd-l-rem5 tc-99"></text>
+		</view>
+		<block wx:if="{{form_goodsList.length}}">
+			<view wx:for="{{form_goodsList}}" class="fx-hc bd-t-f0 pd-tb-1rem ontap-light" bindtap="onGoodsItemTap" data-nth="{{index}}">
+				<text class="fa fa-cubes tc-99 pd-r-rem5"></text>
+				<text class="fx-g1">{{item.goodsName}}</text>
+				<text>{{item.totalPrice}} 元 / {{item.goodsVwq}}</text>
+			</view>
+		</block>
+	</view>
+
+	<view class="content-box">
+		<view class="fx-hc pd-tb-1rem bd-b-f0 ontap-light" bindtap="onClickHwZj">
+			<text class="fx-g1 fw-bxo">货物总价</text>
+			<text class="tc-99">{{form_totalPrice}}</text>
+			<text class="pd-l-rem5 tc-99">元</text>
+		</view>
+		<view class="fx-hc bd-b-f0 ontap-light">
+			<text class="fw-bxo">付款方式</text>
+			<picker mode="selector" class="fx-g1 ta-r pd-tb-1rem" bindchange="onPaytypeChanged" value="{{paytypeIndex}}" range="{{paytypeList}}" range-key="name">
+				<text>{{paytypeList[paytypeIndex].name}}</text>
+				<text class="fa fa-angle-right pd-l-rem5 tc-99"></text>
+			</picker>
+		</view>
+		<view class="fx-hc ontap-light" wx:if="{{paytypeIndex}}">
+			<text class="fw-bxo">账期</text>
+			<!--block wx:if="{{paytypeIndex}}"-->
+				<input class="fx-g1 ta-r pd-tb-1rem" cursor-spacing="50" type="number" model:value="{{form_payDays}}" placeholder="请填写账期" />
+				<text class="pd-l-rem5 pd-tb-1rem">天</text>
+			<!--/block>
+			<block wx:else >
+				<text class="fx-g1 ta-r pd-tb-1rem tc-88" bindtap="onClickZqXf">现付的不用填</text>
+			</block-->
+		</view>
+	</view>
+
+	<view class="content-box">
+		<view class="fx-hc bd-b-f0 ontap-light" bindtap="gotoDriverSelect">
+			<text class="fw-bxo">司机</text>
+			<!--picker mode="selector" header-text="按姓名拼音排序" class="fx-g1 ta-r pd-tb-1rem" bindchange="onDriverChanged" value="{{driverIndex}}" range="{{driverList}}" range-key="driverName">
+				<text wx:if="{{driverIndex >=0}}">{{driverList[driverIndex].driverName}}</text>
+				<text wx:else class="tc-88">请选择司机</text>
+				<text class="fa fa-angle-right pd-l-rem5 tc-99"></text>
+			</picker-->
+			<text class="fx-g1 ta-r pd-tb-1rem" wx:if="{{driverIndex >= 0}}">{{driverList[driverIndex].driverName}}</text>
+			<text class="fx-g1 ta-r pd-tb-1rem tc-88" wx:else>请选择司机</text>
+			<text class="fa fa-angle-right pd-l-rem5 tc-99"></text>
+		</view>
+		<view class="fx-hc ontap-light" bindtap="gotoCarSelect">
+			<text class="fw-bxo">车辆</text>
+			<text class="fx-g1 ta-r pd-tb-1rem" wx:if="{{carInputNo}}">{{carInputNo}}</text>
+			<text class="fx-g1 ta-r pd-tb-1rem tc-88" wx:else>承运车牌</text>
+			<text class="fa fa-angle-right pd-l-rem5 tc-99"></text>
+			<!--picker mode="selector" class="fx-g1 ta-r" bindchange="onCarChanged" value="{{carIndex}}" range="{{carList}}" range-key="carNo">
+				<text wx:if="{{carIndex >=0}}">{{carList[carIndex].carNo}}</text>
+				<text wx:else class="tc-99">请选择车辆</text>
+				<text class="fa fa-angle-right pd-l-rem5 tc-99"></text>
+			</picker-->
+		</view>
+	</view>
+
+	<view class="content-box">
+		<view class="fx-hc ontap-light">
+			<text class="fw-bxo">备注</text>
+			<input class="fx-g1 ta-r pd-tb-1rem" type="text" cursor-spacing="50" model:value="{{form_remark}}" placeholder="选填" />
+		</view>
+	</view>
+	
+	<view>
+		<view style="height:50px;line-height:50px" class="tc-red ta-c mg-b-rem5 fs-rem8"><text>{{errorMsg}}</text></view>
+		<button wx:if="{{!isAjaxing}}" bindtap="submitCgInfo" class="bg-mc tc-ff pd-tb-rem7 wi-fx">立即下单</button>
+		<button wx:else class="bg-mc tc-ff pd-tb-rem7 op-6 wi-fx">正在下单...</button>
+		<view style="height:80px"><!--占位符--></view>
+	</view>
+</view>
+<!-- 底部栏，需要放在最外层！！！ -->
+<dbzj-box tab-index="2"></dbzj-box>

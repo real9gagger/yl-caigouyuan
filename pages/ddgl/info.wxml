@@ -1,0 +1,162 @@
+<!-- 订单详情页 -->
+<view class="bg-f0 pd-rem5" wx:if="{{orderInfos}}">
+	<!-- 订单信息 -->
+	<view class="group-panel-box">
+		<view class="fw-b">订单信息</view>
+		<view class="fx-hc">
+			<text class="fx-g1">编号</text>
+			<text class="pd-l-1rem">{{orderInfos.orderCode}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">订单状态</text>
+			<text class="pd-l-1rem">{{orderInfos.orderStatus}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">下单时间</text>
+			<text class="pd-l-1rem">{{orderInfos.createdtime}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">发车时间</text>
+			<text class="pd-l-1rem">{{orderInfos.loadtime}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">达到时间</text>
+			<text class="pd-l-1rem">{{orderInfos.unloadtime}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">订单总价</text>
+			<text class="pd-l-1rem">{{orderInfos.totalprice}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">支付类型</text>
+			<text class="pd-l-1rem">{{orderInfos.paytype}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">账期</text>
+			<text class="pd-l-1rem">{{orderInfos.paymentdays}}</text>
+		</view>
+	</view>
+	<!-- 发货方 -->
+	<view class="group-panel-box">
+		<view class="fw-b">发货方</view>
+		<view class="fx-hc">
+			<text class="fx-g1">旋切机主</text>
+			<text class="pd-l-1rem">{{orderInfos.xqjzName}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">电话</text>
+			<text class="pd-l-1rem">{{orderInfos.xqjzPhone}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">设备</text>
+			<text class="pd-l-1rem">-</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1 ws-n">设备地址</text>
+			<text class="pd-l-1rem">{{orderInfos.deviceAddress}}</text>
+		</view>
+	</view>
+	<!-- 收货方 -->
+	<view class="group-panel-box">
+		<view class="fw-b">收货方</view>
+		<view class="fx-hc">
+			<text class="fx-g1">胶合板厂</text>
+			<text class="pd-l-1rem">-</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">电话</text>
+			<text class="pd-l-1rem">-</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">仓库</text>
+			<text class="pd-l-1rem">{{orderInfos.jhbWarehouseName}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1 ws-n">仓库地址</text>
+			<text class="pd-l-1rem">{{orderInfos.receiveAddress}}</text>
+		</view>
+	</view>
+	<!-- 货物信息 -->
+	<view class="group-panel-box">
+		<view class="fw-b">货物信息</view>
+		<block wx:if="{{orderInfos.goodsList && orderInfos.goodsList.length}}">
+			<block wx:for="{{orderInfos.goodsList}}" wx:key="gid">
+				<view wx:if="{{index >= 1}}">
+					<!-- 分割线 -->
+					<text class="dp-bk" style="border-top:1px dashed #999"></text>
+				</view>
+				<view class="fx-hc">
+					<text class="fx-g1">名称</text>
+					<text class="pd-l-1rem">{{item.categoryName}} {{item.goodsName}}</text>
+				</view>
+				<view class="fx-hc">
+					<text class="fx-g1">规格</text>
+					<text class="pd-l-1rem">{{item.unitDesc}}</text>
+				</view>
+				<view class="fx-hc">
+					<text class="fx-g1">单价</text>
+					<text class="pd-l-1rem">{{item.unitPrice}} 元</text>
+				</view>
+				<view class="fx-hc">
+					<text class="fx-g1">数量</text>
+					<text class="pd-l-1rem" wx:if="{{item.countMode==1}}">{{item.volume}} 方</text>
+					<text class="pd-l-1rem" wx:elif="{{item.countMode==2}}">{{item.weight}} 吨</text>
+					<text class="pd-l-1rem" wx:else >{{item.quantity}} 件</text>
+				</view>
+				<view class="fx-hc">
+					<text class="fx-g1">总价</text>
+					<text class="pd-l-1rem">{{item.totalPrice}} 元</text>
+				</view>
+			</block>
+		</block>
+		<block wx:else >
+			<view class="tc-99">暂无货物</view>
+		</block>
+	</view>
+	<!-- 其他信息 -->
+	<view class="group-panel-box">
+		<view class="fw-b">其他信息</view>
+		<view class="fx-hc">
+			<text class="fx-g1">承运车辆</text>
+			<text class="pd-l-1rem">{{orderInfos.carNo}}</text>
+		</view>
+		<view class="fx-hc">
+			<text class="fx-g1">司机</text>
+			<text class="pd-l-1rem">{{orderInfos.driverName}}</text>
+		</view>
+		<view class="fx-hc" bindtap="seeOrderWarndesc">
+			<text class="fx-g1 ws-n">校验结果</text>
+			<text class="pd-l-1rem of-te">{{orderInfos.warndesc}}</text>
+		</view>
+		<view class="fx-hc" bindtap="seeOrderRemark">
+			<text class="fx-g1 ws-n">备注</text>
+			<text class="pd-l-1rem">{{orderInfos.remark}}</text>
+		</view>
+	</view>
+	<!-- 订单照片 -->
+	<view class="group-panel-box">
+		<view class="fw-b">订单照片</view>
+		<view class="fx-hc fx-wp" wx:if="{{orderInfos.files && orderInfos.files.length}}">
+			<view wx:for="{{orderInfos.files}}" wx:key="id" class="order-pic-box" bindtap="previewOrderPics" data-nth="{{index}}">
+				<image src="{{imgURL + item.fileid}}"></image>
+				<text><!-- 占位符 --></text>
+			</view>
+		</view>
+		<view wx:else class="tc-99">暂无照片</view>
+	</view>
+	<!-- 车辆轨迹 -->
+	<view class="group-panel-box">
+		<view class="fw-b">车辆轨迹</view>
+		<view wx:if="{{trackPoints[0].points.length}}" style="height:300px">
+			<map 
+				class="wh-f"
+				scale="10"
+				polyline="{{trackPoints}}"
+				include-points="{{trackPoints[0].points}}"
+				markers="{{trackMarkers}}"
+			></map>
+		</view>
+		<view wx:else class="tc-99">暂无车辆轨迹</view>
+	</view>
+</view>
+<view wx:else class="ta-c pd-tb-1rem tc-99">正在加载订单信息...</view>

@@ -1,0 +1,38 @@
+<view class="car-list-box fx-c">
+	<view wx:if="{{searchCount > 0}}" class="pd-lr-rem5">
+		<sszj-box id="page_sszj_box" place-holder="车牌号" bindsearching="onInputDone"></sszj-box>
+	</view>
+
+	<view wx:if="{{searchCount < 0}}" class="fx-g1 pd-1rem tc-99 ta-c">正在加载...</view>
+	<view wx:elif="{{searchCount}}" class="fx-g1 of-a pd-lr-rem5">
+		<view wx:for="{{carList}}" wx:if="{{!item.isHide}}" wx:key="index" 
+			class="fx-hc pd-tb-rem5 pd-lr-1rem tp-dim bg-ff mg-b-rem5 br-10"
+			bindtap="editClInfo"
+			data-index="{{index}}">
+			<!--view>
+				<view wx:if="{{item.imageList.length}}" class="car-pic-box imgcount{{item.imageList.length}}">
+					<image 
+						wx:for="{{item.imageList}}" 
+						wx:for-item="subitem" 
+						wx:key="index"
+						src="{{picBaseUrl}}{{subitem}}"></image>
+				</view>
+				<view wx:else class="car-pic-box imgcount0">
+					<text>{{item.imageText}}</text>
+				</view>
+			</view-->
+			<view class="fx-g1">
+				<view>{{item.carNo}}</view>
+				<view class="tc-99 fs-rem8">行驶证号 {{item.carLicense}}</view>
+				<view class="tc-99 fs-rem8">行驶证照片 {{item.imageList.length ? '已上传' : '无'}}</view>
+				<!--view class="tc-99 fs-rem8">运营证号 {{item.businessLicense}}</view-->
+			</view>
+		</view>
+		<view class="ta-c tc-99 pd-tb-1rem fs-rem8">没有更多了~</view>
+	</view>
+	<view wx:else class="fx-g1 ta-c pd-1rem tc-99">暂无车辆</view>
+
+	<view class="pd-rem5">
+		<button class="bg-mc tc-ff pd-tb-rem7 wi-fx" bindtap="gotoXzCl">新增车辆</button>
+	</view>
+</view>

@@ -1,0 +1,4 @@
+adds 新增
+list 列表
+info 详情
+sels 选择

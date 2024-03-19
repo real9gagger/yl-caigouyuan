@@ -1,0 +1,35 @@
+<!--选择地址旋切机主-->
+<view wx:if="{{!xqjzList}}" class="ta-c tc-99 pd-2rem">正在加载...</view>
+<view wx:elif="{{xqjzList.length}}" class="hi-min-s pd-lr-rem5 bg-f0">
+	<view class="ps-s po-t-0 bg-f0">
+		<sszj-box place-holder="机主名称或手机号" bindsearching="onInputDone"></sszj-box>
+	</view>
+	<view wx:for="{{xqjzList}}" wx:if="{{searchCount && !item.isHide}}" wx:key="id" class="mg-b-rem5 bg-ff br-10 jz0-box of-h">
+		<view class="fx-hc pd-lr-1rem pd-tb-rem5">
+			<text class="fx-g1">{{item.name}}</text>
+			<text class="tc-66" wx:if="{{item.phone}}" bindtap="callXqjz" data-phone="{{item.phone}}">{{item.phone}}</text>
+		</view>
+		<block wx:if="{{item.devices && item.devices.length}}">
+			<view wx:for="{{item.devices}}" wx:for-item="subitem" wx:for-index="subindex" wx:key="id" 
+				class="mg-lr-1rem pd-tb-rem5 tp-dim-over fx-hc"
+				bindtap="selectXqj" 
+				data-jzi="{{index}}" 
+				data-jqi="{{subindex}}">
+				<view class="fx-g1">
+					<view>{{subitem.diType || "旋切机一"}} ({{subitem.diCode || "暂无型号"}})</view>
+					<view class="tc-99 fs-rem8">{{subitem.diAddress}}</view>
+				</view>
+				<view wx:if="{{subitem.id == selectedSbID}}" class="ta-c pd-l-rem5">
+					<image class="row-check-icon" src="../../images/check_icon2.svg"></image>
+					<view class="tc-g0 fs-rem8">已选</view>
+				</view>
+			</view>
+		</block>
+		<block wx:else >
+			<view class="pd-b-1rem tc-99 ta-c">暂无旋切机</view>
+		</block>
+	</view>
+	<view wx:if="{{searchCount}}" class="pd-t-1rem pd-b-2rem ta-c tc-99 fs-rem8">没有更多了~</view>
+	<view wx:else class="pd-t-1rem pd-b-1rem ta-c tc-99">暂无结果~</view>
+</view>
+<view wx:else class="ta-c tc-99 pd-2rem">暂无旋切机主</view>

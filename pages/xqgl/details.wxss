@@ -1,0 +1,21 @@
+.qiugou-icon-box{
+	display: inline-block;
+	color: #f29246;
+	border: 1px solid #f29246;
+	padding:0 10px;
+	border-radius: 20px;
+	font-size: 14px;
+}
+
+.check-icon-box{
+	display: inline-block;
+	width: 1.375rem;
+	height: 1.375rem;
+	margin-right: 5px;
+}
+.avatar-image-box{
+	width: 3rem;
+	height:3rem;
+	overflow: hidden;
+	border-radius: 50%;
+}

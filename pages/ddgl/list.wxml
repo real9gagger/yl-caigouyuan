@@ -1,0 +1,57 @@
+<!-- 订单列表 -->
+<scroll-view scroll-y="true" bindscrolltolower="onScrollBottom" class="ps-r bg-f0 hi-s of-a pd-lr-rem5">
+	<view>
+		<view>
+			<sszj-box place-holder="生产机主或订单号" bindsearching="onInputDone"></sszj-box>
+		</view>
+		<!-- 标签页 -->
+		<view class="fx-hc ta-c bd-b-dd ps-s po-t-0 bg-f0 wi-f">
+			<view class="fx-g1 tab-box {{tabIndex===1 ? 'actvited' : ''}}" bindtap="onTabTap" data-nth="1">全部订单</view>
+			<view class="fx-g1"></view>
+			<view class="fx-g1 tab-box {{tabIndex===2 ? 'actvited' : ''}}">
+				<picker
+					mode="selector" 
+					bindchange="onStatusSelected"
+					range="{{statusList}}" 
+					range-key="label">
+					<text>{{statusList[statusIndex].label}}</text>
+					<text class="fa fa-angle-down mg-l-rem3 fs-1rem4"></text>
+				</picker>
+			</view>
+		</view>
+		<!-- 订单列表 -->
+		<view wx:if="{{!orderList}}" class="pd-t-1rem pd-b-2rem ta-c tc-99">
+			<text class="fa fa-circle-o-notch fa-spin"></text>
+			<text class="pd-l-rem3">正在加载...</text>
+		</view>
+		<view wx:elif="{{!orderList.length}}" class="pd-tb-1rem ta-c tc-99">暂无订单</view>
+		<view wx:else >
+			<view wx:for="{{orderList}}" wx:for-item="item" wx:key="orderID" 
+			class="pd-1rem br-10 mg-t-rem5 bg-ff tp-dim"
+			bindtap="gotoOrderInfos" data-oid="{{item.orderID}}">
+				<view class="pd-b-1rem fx-hc">
+					<text class="fw-b fx-g1">{{item.orderCode}}</text>
+					<text style="color:{{item.statusColor}}">{{item.statusText}}</text>
+				</view>
+				<view class="pd-b-1rem fx-hc">
+					<text class="fx-g1">{{item.driverName}} / {{item.carNo}}</text>
+					<text>{{item.createdTime}} 下单</text>
+				</view>
+				<view class="fx-hc">
+					<text class="fx-g1 of-te">{{item.orderFrom}}</text>
+					<text class="pd-lr-1rem fa fa-long-arrow-right fs-1rem5 tc-66"></text>
+					<text class="fx-g1 ta-r of-te">{{item.orderTo}}</text>
+				</view>
+				<view class="pd-t-1rem fx-hc" wx:for="{{item.goodsList}}" wx:for-item="goods" wx:key="gid">
+					<text class="fx-g1 of-te">
+						<text class="fa fa-cubes tc-99"></text> {{goods.name}}
+					</text>
+					<text class="fx-g1 ta-c">{{goods.vwq}}</text>
+					<text class="fx-g1 of-te">{{goods.desc}}</text>
+				</view>
+			</view>
+			<view wx:if="{{curRecordCount !== 0}}" class="pd-t-1rem5 pd-b-1rem ta-c tc-99">正在加载...</view>
+			<view wx:else class="pd-t-1rem5 pd-b-1rem ta-c tc-99">没有更多了~</view>
+		</view>
+	</view>
+</scroll-view>

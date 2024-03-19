@@ -1,0 +1,43 @@
+/* 选择地址旋切机主 */
+.jz-box{
+	/*box-shadow: 0 0 4px 1px #ddd;*/
+	border: 1px solid #dfdfdf;
+}
+
+.add-btn{
+	position: fixed;
+	right: 1rem;
+	bottom: 1rem;
+	z-index: 9;
+	background-color: var(--main-color);
+	width: 3.5rem;
+	height: 3.5rem;
+	text-align: center;
+	border-radius: 50%;
+	color: #fff;
+	opacity: 1;
+	transition: opacity 0.5s;
+}
+.add-btn.faded{/*变淡*/
+	opacity: 0.25;
+}
+.add-btn > image{
+	display: inline-block;
+	vertical-align: middle;
+	height: 20px;
+	width: 20px;
+	margin-top: calc(1.75rem - 10px);
+}
+
+.xqj-pic-box{
+	width: 46px;
+	height: 46px;
+	vertical-align: middle;
+}
+
+.row-check-icon{
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	vertical-align: middle;
+}

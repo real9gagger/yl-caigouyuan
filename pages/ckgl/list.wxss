@@ -1,0 +1,5 @@
+/* 仓库列表 */
+.item-icon-box{
+	display: inline-block;
+	width: 1.25rem;
+}

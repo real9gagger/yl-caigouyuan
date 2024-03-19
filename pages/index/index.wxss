@@ -1,0 +1,63 @@
+/**首页-登录**/
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80rpx 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 130rpx;
+  height: 130rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+}
+
+.usermotto {
+  margin-top: 70px;
+  width: 100%;
+  padding: 0 2rem;
+}
+.usermotto > button{
+  width: 100% !important;
+}
+
+.userinput-normal{
+  color: #000;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.userinput-actived{
+  color: var(--main-color);
+  border-bottom: 1px solid var(--main-color);
+}
+
+.auth-panel-box{
+  transition: all 0.25s;
+  opacity: 0;
+}
+.auth-panel-box > view{
+  transition: all 0.25s;
+  transform: translateY(100%);
+}
+
+.auth-panel-box.showme{
+  opacity: 1;
+}
+.auth-panel-box.showme > view{
+  transform: translateY(0px);
+}

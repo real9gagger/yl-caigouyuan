@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText":"我的仓库",
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#f0f0f0",
+  "backgroundTextStyle": "dark"
+}

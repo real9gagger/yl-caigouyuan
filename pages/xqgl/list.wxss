@@ -1,0 +1,40 @@
+/* 需求列表 */
+.add-btn{
+	position: fixed;
+	right: 1rem;
+	bottom: 20px;
+	z-index: 9;
+	background-color: var(--main-color);
+	width: 3.5rem;
+	height: 3.5rem;
+	text-align: center;
+	border-radius: 50%;
+	color: #fff;
+	opacity: 1;
+	transition: opacity 0.5s;
+}
+.add-btn.faded{/*变淡*/
+	opacity: 0.25;
+}
+.add-btn > image{
+	display: inline-block;
+	vertical-align: middle;
+	height: 20px;
+	width: 20px;
+	margin-top: calc(1.75rem - 10px);
+}
+
+.qiugou-tips-box{
+	color: #f29246;
+	border: 1px #f29246 solid;
+	border-radius: 20px;
+	padding:0px 5px;
+	font-size: 12px;
+}
+.arrow-down-box{
+	transform: rotateZ(0deg);
+	transition: all 0.5s;
+}
+.arrow-down-box.rt180deg{
+	transform: rotateZ(180deg);
+}

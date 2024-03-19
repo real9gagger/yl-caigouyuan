@@ -1,0 +1,15 @@
+<!--手动输入地址-->
+<view class="bg-f0 hi-s">
+	<view>
+		<textarea class="wi-f bg-ff pd-1rem"
+			focus="{{true}}"
+			show-confirm-bar="{{false}}"
+			placeholder="请输入详细地址"
+			bindinput="onTaInput"
+			style="height:100px"></textarea>
+	</view>
+	<view class="pd-lr-1rem pd-tb-2rem">
+		<button bindtap="onInputConfirmed" class="bg-mc tc-ff wi-ax pd-tb-rem7">完成</button>
+	</view>
+</view>
+

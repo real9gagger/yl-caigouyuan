@@ -1,0 +1,132 @@
+<!--商品详情-->
+<view class="hi-s fx-c">
+	<view class="fx-hc pd-tb-1rem pd-lr-1rem bd-b-f0">
+		<text class="xianhuo-icon-box">现货</text>
+		<text class="fx-g1 pd-l-1rem fw-b">{{spInfos.goodsCategory}} 单板</text>
+		<text class="tc-99 fa fa-clock-o"></text>
+		<text class="pd-l-rem3">{{spInfos.endDate}}</text>
+	</view>
+	<view class="fx-g1 of-vs">
+		<view class="pd-lr-1rem pd-tb-rem5">
+			<view class="fx-hc pd-tb-rem5 tp-dim-over">
+				<view class="fx-g1">单号</view>
+				<view class="of-te">{{spInfos.spCode}}</view>
+			</view>
+			<view class="fx-hc pd-tb-rem5 tp-dim-over">
+				<view class="fx-g1"><!--text class="fa fa-star-o pd-r-rem5"></text-->等级</view>
+				<view class="of-te">{{spInfos.goodsName}}</view>
+			</view>
+			<view class="fx-hc pd-tb-rem5 tp-dim-over">
+				<view class="fx-g1"><!--text class="fa fa-bullseye pd-r-rem5"></text-->规格</view>
+				<view class="of-te">{{spInfos.goodsDesc}}</view>
+			</view>
+			<view class="fx-hc pd-tb-rem5 tp-dim-over">
+				<view class="fx-g1"><!--text class="fa fa-cubes pd-r-rem5"></text-->数量</view>
+				<view class="of-te">{{spInfos.goodsNums}} 立方米</view>
+			</view>
+			<view class="fx-hc pd-tb-rem5 tp-dim-over">
+				<view class="fx-g1">单价</view>
+				<view class="of-te">{{spInfos.unitPrice}} 元/方</view>
+			</view>
+			<view class="fx-hc pd-tb-rem5 tp-dim-over">
+				<view class="fx-g1">总价</view>
+				<view class="of-te">{{spInfos.totalPrice}} 元</view>
+			</view>
+			<view class="fx-hc pd-tb-rem5 tp-dim-over">
+				<view class="fx-g1">发布时间</view>
+				<view class="of-te">{{spInfos.createTime}}</view>
+			</view>
+			<view class="fx-hc pd-tb-rem5 tp-dim-over">
+				<view class="fx-g1"><!--text class="fa fa-map-marker pd-r-rem5"></text-->仓库地址</view>
+				<view class="of-te">{{spInfos.spAddress}}</view>
+			</view>
+			<view class="ps-r of-h bg-f0">
+				<map 
+					id="maper"
+					class="wi-f"
+					latitude="{{deviceInfos.diLat}}"
+					longitude="{{deviceInfos.diLon}}"
+					scale="16"
+					markers="{{deviceInfos.mapMarker}}"
+					style="height:300px"
+				></map>
+				<view class="ps-a po-f zi-10 tp-dim" bindtap="gotoMaper"><!--占位符--></view>
+			</view>
+		</view>
+		<view class="fx-hc pd-b-rem5 pd-lr-1rem bd-b-f0">
+			<view class="fx-g1">
+				<image class="check-icon-box" src="../../images/check_icon1.svg"></image>
+				<text class="tc-r1">在线交易</text>
+			</view>
+			<view class="fx-g1 ta-c">
+				<image class="check-icon-box" src="../../images/check_icon1.svg"></image>
+				<text class="tc-r1">保障安全</text>
+			</view>
+			<view class="fx-g1 ta-r">
+				<image class="check-icon-box" src="../../images/check_icon1.svg"></image>
+				<text class="tc-r1">质量可靠</text>
+			</view>
+		</view>
+		<view class="fx-hc pd-1rem bd-b-f0 tp-dim-over" bindtap="callXqjz">
+			<view>
+				<image class="avatar-image-box" src="../../images/default_avatar1.png"></image>
+			</view>
+			<view class="fx-g1 pd-l-1rem">
+				<view>{{spInfos.xqjzName}}</view>
+				<view class="tc-99 fs-rem8"><text class="fa fa-phone"></text> {{spInfos.xqjzPhone}}</view>
+			</view>
+			<view class="ta-c tc-o0">
+				<view class="fa fa-phone fs-1rem5"></view>
+				<view class="fs-rem8">拨打电话</view>
+			</view>
+		</view>
+		<view class="pd-1rem bd-b-f0 tp-dim-over">
+			<view class="pd-b-1rem">商品描述</view>
+			<view wx:if="{{spInfos.spDesc}}" class="tc-33">{{spInfos.spDesc}}</view>
+			<view wx:else class="tc-99">暂无商品描述</view>
+		</view>
+		<view class="pd-b-1rem">
+			<view class="pd-1rem">商品图片</view>
+			<view wx:for="{{spInfos.picList}}" wx:key="fileId" bindtap="previewSpPics" data-nth="{{index}}" class="ta-c">
+				<image class="wi-max-f" src="{{spPicUrl + item.fileId}}" mode="widthFix"></image>
+			</view>
+			<view wx:if="{{!spInfos.picList.length}}" class="tc-99 pd-lr-1rem">暂无商品图片</view>
+		</view>
+		<view wx:if="{{recommendGoods.length}}" class="pd-tb-1rem pd-lr-rem25">
+			<view class="fx-hc mg-b-1rem">
+				<view class="fx-g1 bd-b-f0"></view>
+				<view class="pd-lr-1rem fw-b">推 荐</view>
+				<view class="fx-g1 bd-b-f0"></view>
+			</view>
+			<view class="fx-r fx-wp">
+				<block wx:for="{{recommendGoods}}" wx:key="spID">
+					<view class="recommend-item-box">
+						<view class="bd-dd tp-dim" bindtap="seeRecommend" data-nth="{{index}}">
+							<view class="ps-r of-h bg-f0">
+								<view class="pd-t-f"></view>
+								<image wx:if="{{item.picList.length}}" class="ps-a po-f wi-f" src="{{spPicUrl + item.picList[0].fileId}}"></image>
+								<view wx:else class="ps-a po-mc tc-cc fs-5rem">{{item.goodsCategory[0]}}</view>
+							</view>
+							<view class="pd-rem5 of-te">{{item.goodsCategory}} {{item.goodsName}}</view>
+							<view class="pd-lr-rem5 pd-b-rem5 ta-r">
+								<text class="fs-rem8" decode>¥&nbsp;</text>
+								<text class="fw-b">{{item.totalPrice}}</text>
+							</view>
+						</view>
+					</view>
+				</block>
+			</view>
+			<view class="tc-99 ta-c fs-rem8 mg-t-1rem">没有更多了~</view>
+		</view>
+	</view>
+	<view class="fx-hc">
+		<view class="fx-g1 ta-c pd-tb-rem5 bg-f9 ps-r">
+			<view><image class="share-image-box" src="../../images/share_icon1.svg"></image></view>
+			<view class="fs-rem8">分享</view>
+			<button type="default" open-type="share" class="ps-a po-tl-0 po-b-0 wi-fx op-0"><!--绝对定位--></button>
+		</view>
+		<view class="fx-g1 bg-b0 tc-ff fx-ss fx-r fx-mc tp-dim" bindtap="buyTheGoods">
+			<text>立即购买</text>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,94 @@
+<!-- 新增需求 -->
+<view class="pd-lr-1rem empty-warning{{warningCode}}">
+	<view class="fx-hc bd-b-f0 tp-dim-over">
+		<text>品名</text>
+		<picker class="fx-g1 pd-tb-1rem ta-r text-line-hei"
+				mode="selector" 
+				bindchange="onCategoryChanged" 
+				range="{{categoryList}}" 
+				range-key="name">
+			<text wx:if="{{categoryIndex >= 0}}">{{categoryList[categoryIndex].name}}</text>
+			<text wx:else class="op-5">正在加载...</text>
+		</picker>
+		<text class="fa fa-angle-right fs-1rem2 op-5 pd-l-rem5"></text>
+	</view>
+	<view class="fx-hc bd-b-f0 tp-dim-over">
+		<text>等级</text>
+		<picker class="fx-g1 pd-tb-1rem ta-r text-line-hei"
+				mode="selector" 
+				bindchange="onGoodsChanged" 
+				range="{{goodsList}}" 
+				range-key="name">
+			<text wx:if="{{goodsIndex >= 0}}">{{goodsList[goodsIndex].name}}</text>
+			<text wx:else class="op-5">正在加载...</text>
+		</picker>
+		<text class="fa fa-angle-right fs-1rem2 op-5 pd-l-rem5"></text>
+	</view>
+	<view class="fx-hc bd-b-f0 tp-dim-over">
+		<text>规格</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" placeholder-class="ph-css" model:value="{{goodsSpeci}}" type="text" placeholder="请填写规格" />
+	</view>
+	<view class="fx-hc bd-b-f0 tp-dim-over">
+		<text>数量</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" placeholder-class="ph-css" model:value="{{goodsNums}}" type="digit" placeholder="请填写数量" />
+		<text class="op-5 pd-l-rem5">方</text>
+	</view>
+	<view class="fx-hc bd-b-f0 tp-dim-over">
+		<text>单价</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" placeholder-class="ph-css" model:value="{{goodsPrice}}" type="digit" placeholder="请填写单价" />
+		<text class="op-5 pd-l-rem5">元</text>
+	</view>
+	<view class="fx-hc bd-b-f0 tp-dim-over" bindtap="showZjTips">
+		<text class="fx-g1">总价</text>
+		<text wx:if="{{goodsNums && goodsPrice}}" class="tc-99 pd-tb-1rem">{{goodsNums * goodsPrice}} 元</text>
+		<text wx:else class="tc-99 pd-tb-1rem">（自动计算，无需填写）</text>
+	</view>
+	<view class="fx-hc bd-b-f0 tp-dim-over" bindtap="selectWareHouse">
+		<text>仓库</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" placeholder-class="ph-css" model:value="{{warehouseName}}" type="text" placeholder="请选择仓库" disabled />
+		<text class="fa fa-angle-right fs-1rem2 op-5 pd-l-rem5"></text>
+	</view>
+	<view class="fx-hc bd-b-f0 tp-dim-over">
+		<text>有效期至</text>
+		<picker class="fx-g1 pd-tb-1rem ta-r text-line-hei" mode="date" model:value="{{goodsEndate}}">
+			<text wx:if="{{goodsEndate}}">{{goodsEndate}}</text>
+			<text wx:else class="op-5">请选择日期</text>
+		</picker>
+		<text class="fa fa-angle-right fs-1rem2 op-5 pd-l-rem5"></text>
+	</view>
+	<view class="fx-hc bd-b-f0 tp-dim-over">
+		<text>描述</text>
+		<textarea class="fx-g1 pd-tb-1rem ta-r text-line-hei" 
+			auto-height="{{true}}" 
+			model:value="{{goodsRemark}}" 
+			cursor-spacing="50"
+			focus="{{isTaFocus}}"
+			bindtap="focusMyAss"
+			bindblur="focusMyAss"
+			show-confirm-bar="{{false}}"
+			placeholder="可多行（选填）"></textarea>
+	</view>
+	<view class="pd-tb-1rem" style="display:none"><!--暂时隐藏不用上传照片-->
+		<view class="fx-r pd-b-rem5">
+			<text class="fx-g1">照片</text>
+			<text class="tc-77">（可选，最多9张）</text>
+		</view>
+		<view class="fx-r fx-wp">
+			<view wx:for="{{picList}}" wx:key="fileId" class="order-pic-box" bindtap="onTapingPic" data-nth="{{index}}">
+				<label wx:if="{{item.fileId===0}}" class="tc-red fs-rem8">上传失败</label>
+				<label wx:elif="{{item.fileId===1}}" class="tc-mc fs-rem8">正在上传...</label>
+				<image wx:else src="{{picUrl + item.fileId}}"></image>
+				<text><!-- 占位符、预览或者重新上传图片 --></text>
+			</view>
+			<view wx:if="{{picList.length < 9}}" class="order-pic-box tp-dim" bindtap="onTapingPic" data-nth="-1">
+				<image src="../../images/icon_plus.png" class="adds-btn"></image>
+				<text><!-- 占位符、上传图片 --></text>
+			</view>
+		</view>
+	</view>
+	<view class="pd-b-2rem pd-t-4rem">
+		<button wx:if="{{isAjaxing===0}}" bindtap="onSubmitGoods" class="bg-mc tc-ff pd-tb-rem7 wi-fx">{{theXqID ? "保 存" : "发 布"}}</button>
+		<button wx:elif="{{isAjaxing===1}}" class="bg-mc tc-ff pd-tb-rem7 wi-fx op-5">正在{{theXqID ? "保存" : "发布"}}...</button>
+		<button wx:else class="bg-g0 tc-ff pd-tb-rem7 wi-fx"><text class="fa fa-check-circle pd-r-rem3"></text>{{theXqID ? "保存" : "发布"}}成功</button>
+	</view>
+</view>

@@ -1,0 +1,22 @@
+<!--底部组件 -->
+<view class="ddzj-footer-box" id="page_bottom_tabbar_box">
+	<view class="fx-hc ta-c">
+		<view class="wi-col-4 pd-tb-rem5 {{tabIndex===1 ? 'tab-color' : 'tc-66'}}" bindtap="gotoTab1">
+			<text class="fa fa-home fs-1rem5"></text>
+			<view class="fs-rem75">首页</view>
+		</view>
+		<view class="wi-col-4 fx-ss ps-r" bindtap="gotoTab2">
+			<view class="ddzj-radial-box {{tabIndex===2 ? 'is-actived' : ''}}">
+				<view class="tc-ff fx-c fx-mc inner-btn">
+					<text class="fa fa-shopping-cart fs-1rem5"></text>
+					<view class="fs-rem75">采购</view>
+				</view>
+			</view>
+		</view>
+		<view class="wi-col-4 pd-tb-rem5 {{tabIndex===3 ? 'tab-color' : 'tc-66'}}" bindtap="gotoTab3">
+			<text class="fa fa-user fs-1rem5"></text>
+			<view class="fs-rem75">我的</view>
+		</view>
+	</view>
+</view>
+<view style="height:{{tabBarHeight}}px"><!-- 底部栏占位 --></view>

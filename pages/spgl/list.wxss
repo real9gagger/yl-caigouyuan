@@ -1,0 +1,15 @@
+/* 商品列表 */
+.xianhuo-tips-box{
+	color: #00ab28;
+	border: 1px #00ab28 solid;
+	border-radius: 20px;
+	padding:0px 5px;
+	font-size: 12px;
+}
+.arrow-down-box{
+	transform: rotateZ(0deg);
+	transition: all 0.5s;
+}
+.arrow-down-box.rt180deg{
+	transform: rotateZ(180deg);
+}

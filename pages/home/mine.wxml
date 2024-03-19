@@ -1,0 +1,49 @@
+<!--个人中心（我的）-->
+<view class="bg-f0 of-a" style="height:calc(100vh - {{viewMarginBottom}}px)">
+	<view class="bg-b0 pd-tb-rem5 pd-lr-1rem fx-r">
+		<view class="userinfo-avatar-outter">
+			<view class="userinfo-avatar">
+				<image wx:if="{{myUserAvatar}}" class="wh-f" src="{{myUserAvatar}}"></image>
+				<open-data wx:else type="userAvatarUrl"></open-data>
+			</view>
+		</view>
+		<view class="tc-ff pd-rem5">
+			<view>{{myUserName}}</view>
+			<view class="fs-rem8 pd-t-rem2">{{myUserPhone}}</view>
+		</view>
+	</view>
+	<view class="fx-hc mg-rem5 bg-ff br-10 of-h">
+		<view class="fx-g1 ta-c tp-dim pd-tb-1rem" bindtap="gotoSubPage" data-url="../ddgl/list">
+			<view class="btn-list-icon">
+				<image class="wh-f" src="../../images/order_icon1.svg"></image>
+			</view>
+			<view>订单管理</view>
+		</view>
+		<view class="fx-g1 ta-c tp-dim pd-tb-1rem" bindtap="unOpenTips">
+			<view class="btn-list-icon">
+				<image class="wh-f" src="../../images/certs_icon1.svg"></image>
+			</view>
+			<view>资质认证</view>
+		</view>
+	</view>
+	<view class="mg-lr-rem5 pd-lr-1rem bg-ff br-10 of-h">
+		<view class="fx-hc bd-b-f0 pd-tb-1rem tp-dim-over" bindtap="gotoSubPage" data-url="../ckgl/list">
+			<image class="item-list-icon" src="../../images/cangku_icon1.svg"></image>
+			<text class="pd-l-rem5">仓库管理</text>
+		</view>
+		<view class="fx-hc bd-b-f0 pd-tb-1rem tp-dim-over" bindtap="gotoSubPage" data-url="../sjgl/list">
+			<image class="item-list-icon" src="../../images/driver_icon1.svg"></image>
+			<text class="pd-l-rem5">司机管理</text>
+		</view>
+		<view class="bd-b-f0 pd-tb-1rem tp-dim-over" bindtap="gotoSubPage" data-url="../clgl/list">
+			<image class="item-list-icon" src="../../images/truck_icon1.svg"></image>
+			<text class="pd-l-rem5">车辆管理</text>
+		</view>
+		<view class="pd-tb-1rem tp-dim-over" bindtap="gotoSubPage" data-url="../xqjz/list">
+			<image class="item-list-icon" src="../../images/xqjz_icon1.svg"></image>
+			<text class="pd-l-rem5">生产机主</text>
+		</view>
+	</view>
+</view>
+<!-- 底部栏，需要放在最外层！！！ -->
+<dbzj-box tab-index="3"></dbzj-box>

@@ -1,0 +1,75 @@
+<!-- 新增地址旋切机主 -->
+<view wx:if="{{!completeBoxShow}}" class="bg-f0 hi-s">
+	<view class="pd-lr-1rem pd-tb-rem5 tc-99"><!-- 基本信息 --></view>
+	<view class="fx-hc pd-lr-1rem bg-ff bd-b-f0 tp-dim {{errorIndex===1 ? 'empty-warning' : ''}}">
+		<text>姓名</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" 
+			   model:value="{{form_name}}" 
+			   type="text" 
+			   bindtap="onNameClicked"
+			   placeholder="生产机主姓名" 
+			   disabled="{{!form_id}}"
+			   placeholder-class="ph-css" />
+	</view>
+	<!--view class="fx-hc pd-lr-1rem bg-ff bd-b-f0 tp-dim {{errorIndex===2 ? 'empty-warning' : ''}}">
+		<text>身份证号</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" 
+			   maxlength="18" 
+			   model:value="{{form_idcard}}" 
+			   type="idcard" 
+			   placeholder="生产机主身份证号（选填）" 
+			   placeholder-class="ph-css" />
+	</view-->
+	<view class="fx-hc pd-lr-1rem bg-ff bd-b-f0 tp-dim {{errorIndex===3 ? 'empty-warning' : ''}}">
+		<text>手机号</text>
+		<input class="fx-g1 pd-tb-1rem ta-r" 
+			   maxlength="30"
+			   model:value="{{form_phone}}" 
+			   type="tel" 
+			   placeholder="生产机主手机号" 
+			   placeholder-class="ph-css" />
+	</view>
+	<view class="pd-lr-1rem pd-tb-rem5 tc-99"><!-- 其他信息 --></view>
+	<view class="fx-hc pd-lr-1rem bg-ff bd-b-f0 tp-dim {{errorIndex===4 ? 'empty-warning' : ''}}" bindtap="gotoMaper">
+		<text class="pd-r-1rem">设备地址</text>
+		<text class="fx-g1 pd-tb-1rem ta-r text-line-hei {{!form_address ? 'op-5' : ''}}">{{form_address || "旋切机地址"}}</text>
+		<text class="fa fa-angle-right fs-1rem2 tc-99 pd-l-rem5"></text>
+	</view>
+	<view class="mg-t-1rem ta-c tc-red" style="height:2rem;line-height:2rem;">{{errMsgText}}</view>
+	<view class="pd-1rem">
+		<button wx:if="{{!isAjaxing}}" class="bg-mc tc-ff pd-tb-rem7 wi-fx" bindtap="onSubmitInfo">保 存</button>
+		<button wx:else class="bg-mc tc-ff pd-tb-rem7 wi-fx op-6">正在提交...</button>
+	</view>
+</view>
+<view wx:else class="bg-f0 hi-s of-a auto-complete-box">
+	<view class="bg-ff fx-hc">
+		<view style="width:60px;height:50px"><!--占位--></view>
+		<input class="fx-g1 pd-tb-1rem ta-c" 
+			   model:value="{{form_name}}" 
+			   type="text" 
+			   bindinput="getJzListByName"
+			   focus="{{true}}"
+			   auto-focus="{{true}}"
+			   placeholder="请输入生产机主姓名" />
+		<view class="pd-tb-1rem tc-mc ta-c tp-dim" style="width:60px" bindtap="onInputDone">{{form_name ? "完成" : "取消"}}</view>
+	</view>
+	<view wx:if="{{!completeNames}}" class="ta-c pd-1rem tc-99">		
+		<text class="fa fa-circle-o-notch fa-spin"></text>
+		<text class="pd-l-rem5">匹配中...</text>
+	</view>
+	<view wx:elif="{{completeNames.length}}">
+		<view class="ta-c pd-tb-1rem tc-99 fs-rem8">
+			<text class="fa fa-info-circle"></text>
+			<text class="pd-l-rem5">请关联已有的生产机主，避免重复添加</text>
+		</view>
+		<view wx:for="{{completeNames}}" wx:key="name" class="pd-lr-1rem bg-ff tp-dim" bindtap="onAutoCompleteTaped" data-nth="{{index}}">
+			<view class="the-bottom-line">
+				<view>{{item.name}}</view>
+				<view wx:if="{{item.idCard}}" class="fs-rem8 tc-99">{{item.idCard}}</view>
+				<view wx:if="{{item.phone}}" class="fs-rem8 tc-99">{{item.phone}}</view>
+				<view wx:if="{{item.address && item.address.length}}" class="fs-rem8 tc-99">{{item.address[0]}}</view>
+			</view>
+		</view>
+		<view class="ta-c pd-tb-1rem tc-99 fs-rem8">没有更多了~</view>
+	</view>
+</view>

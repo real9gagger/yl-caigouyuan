@@ -1,0 +1,61 @@
+<!--首页-登录-->
+<view class="container">
+  <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName" default-text="正在授权"></open-data>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="tryGetUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{myUserInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{myUserInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="pd-lr-2rem wi-f mg-t-1rem5">
+    <view>
+      <view class="tc-99 pd-t-rem9 fs-12px">账号</view>
+      <input bindblur="onInputBlur" bindfocus="onInputFocus" data-nth="0" placeholder-class="ph-css" type="text" model:value="{{userName}}" class="wi-fx pd-tb-rem5 {{focusIndex===0 ? 'userinput-actived' : 'userinput-normal'}}" placeholder="请输入账号" />
+    </view>
+    <view class="ps-r">
+      <view class="tc-99 pd-t-rem9 fs-12px">密码</view>
+      <input wx:if="{{!isSeePswd}}" bindblur="onInputBlur" bindfocus="onInputFocus" data-nth="1" placeholder-class="ph-css" type="password" model:value="{{userPswd}}" class="wi-fx pd-tb-rem5 {{focusIndex===1 ? 'userinput-actived' : 'userinput-normal'}}" placeholder="请输入密码" />
+      <input wx:else bindblur="onInputBlur" bindfocus="onInputFocus" data-nth="1" placeholder-class="ph-css" type="text" model:value="{{userPswd}}" class="wi-fx pd-tb-rem5 {{focusIndex===1 ? 'userinput-actived' : 'userinput-normal'}}" placeholder="请输入密码" />
+      <text wx:if="{{focusIndex===1 || isSeePswd}}" class="ps-a po-br-0 zi-x9 lh-1x5 fa fa-eye pd-tb-rem5 pd-l-1rem pd-r-rem5 {{isSeePswd ? 'tc-mc' : 'tc-cc'}}" bindtap="seeThePassword"></text>
+    </view>
+  </view>
+  <view class="usermotto">
+    <button wx:if="{{!isLogining}}" bindtap="userLogin" class="bg-mc tc-ff pd-tb-rem7">{{motto}}</button>
+    <button wx:elif="{{isLogining===1}}" class="bg-mc tc-ff pd-tb-rem7 op-6">正在登录...</button>
+    <button wx:else bindtap="gotoCgzy" class="bg-mc tc-ff pd-tb-rem7">进入主页</button>
+  </view>
+  <view class="pd-tb-2rem">
+    <text bindtap="clearLocalStorage" class="dp-ib tc-cc">清除账户信息</text>
+  </view>
+  <view class="ps-f po-bl-0 zi-x0 wi-f ta-c pd-b-rem5 tc-dd fs-12px">
+    <view>云上智慧木业采购员小程序</view>
+    <view>{{appEnvVersion}}</view>
+  </view>
+</view>
+<view wx:if="{{isShowAuthPanel}}" class="ps-f po-tl-0 wh-f zi-x5 bg-tl auth-panel-box {{isSlideAuthPanel ? 'showme' : ''}}">
+  <view class="ps-a po-bl-0 wi-f bg-ff pd-1rem">
+    <view class="fx-hc">
+      <image src="../../images/ys_logo.png" class="br-h bg-f6" style="width:40px;height:40px"></image>
+      <view class="fx-g1 pd-l-rem5">
+        <view>采购员小程序</view>
+        <view class="tc-99 fs-rem8">云上智慧木业</view>
+      </view>
+    </view>
+    <view class="pd-tb-2rem fw-b ta-c">申请获取您的微信昵称和头像</view>
+    <view class="fx-hc pd-tb-1rem">
+      <button class="fx-g1 tc-mc pd-tb-rem7" bindtap="showOrHideWxAuth">下次再说</button>
+      <view style="width:2rem;height:1rem"><!--占位--></view>
+      <button class="fx-g1 bg-mc tc-ff pd-tb-rem7" bindtap="tryWxAuth">立即授权</button>
+    </view>
+  </view>
+</view>

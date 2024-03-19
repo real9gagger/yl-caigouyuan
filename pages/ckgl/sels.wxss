@@ -1,0 +1,7 @@
+/* 选择仓库 */
+.row-check-icon{
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	vertical-align: middle;
+}

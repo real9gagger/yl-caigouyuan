@@ -1,0 +1,22 @@
+/* 新增地址旋切机主 */
+.empty-warning{color: red !important}
+
+.the-bottom-line{
+	border-bottom:1px solid #f0f0f0;
+	padding:0.5rem 0;
+}
+
+@keyframes ani-slide-up{
+	0%{
+		transform: translateY(100%);
+		opacity: 0.5;
+	}
+	100%{
+		transform: translateY(0%);
+		opacity: 1;
+	}
+}
+
+.auto-complete-box{
+	animation: ani-slide-up 0.2s ease 0s 1 normal;
+}

@@ -1,0 +1,39 @@
+<!-- 旋切机主列表 -->
+<view wx:if="{{!xqjzList}}" class="ta-c tc-99 pd-2rem">正在加载...</view>
+<view wx:elif="{{xqjzList.length}}" class="hi-min-s pd-lr-rem5 bg-f0">
+	<view class="ps-s po-t-0 bg-f0">
+		<sszj-box id="page_sszj_box" place-holder="机主名称或手机号" bindsearching="onInputDone"></sszj-box>
+	</view>
+	<view wx:if="{{searchCount && !item.isHide}}" wx:for="{{xqjzList}}" wx:key="id" class="mg-b-rem5 bg-ff br-10 jz0-box of-h">
+		<view class="fx-hc pd-lr-1rem pd-tb-rem5">
+			<text class="fx-g1">{{item.name}}</text>
+			<text class="tc-66" wx:if="{{item.phone}}" bindtap="callXqjz" data-phone="{{item.phone}}"> {{item.phone}}</text>
+		</view>
+		<block wx:if="{{item.devices && item.devices.length}}">
+			<view wx:for="{{item.devices}}" 
+				  wx:for-item="subitem" 
+				  wx:for-index="subindex" 
+				  wx:key="id" 
+				  bindtap="editXqjz"
+				  data-ix0="{{index}}"
+				  data-ix1="{{subindex}}"
+				  class="mg-lr-1rem pd-tb-rem5 tp-dim-over">
+				<!--view>
+					<image src="../../images/xqj_icon1.svg" class="xqj-pic-box"></image>
+				</view-->
+				<view>
+					<view>{{subitem.diType || "旋切机一"}} ({{subitem.diCode || "暂无型号"}})</view>
+					<view class="tc-99 fs-rem8">{{subitem.diAddress}}</view>
+				</view>
+			</view>
+		</block>
+		<block wx:else >
+			<view class="pd-b-1rem tc-99 ta-c">暂无旋切机</view>
+		</block>
+	</view>
+	<view wx:if="{{searchCount}}" class="pd-t-1rem pd-b-2rem ta-c tc-99 fs-rem8">没有更多了~</view>
+	<view wx:else class="pd-t-1rem pd-b-1rem ta-c tc-99">暂无结果~</view>
+</view>
+<view wx:else class="ta-c tc-99 pd-2rem">暂无旋切机主</view>
+
+<view class="add-btn {{isScrolling ? 'faded' : ''}}" bindtap="addXqjz"><image src="../../images/plus_white.png" /></view>

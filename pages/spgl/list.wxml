@@ -1,0 +1,96 @@
+<!--商品列表-->
+<scroll-view 
+	scroll-y="true" 
+	bindscrolltolower="onScrollBottom"
+	class="bg-f0 of-a hi-s">
+	<view>
+		<!--view>
+			<sszj-box place-holder="商品等级/规格" bindsearching="onInputDone"></sszj-box>
+		</view-->
+		<!-- 搜索下拉框 -->
+		<view  wx:if="{{spList && spList.length}}" class="fx-hc ta-c bd-b-f0 ps-s po-t-0 wi-f bg-ff pd-tb-rem5" id="page_top_head_box">
+			<picker class="fx-g1 {{tabTapIndex===1 ? 'tc-b0' : ''}}"
+				mode="selector" 
+				bindchange="onCategorySelected"
+				bindcancel="onCategorySelected"
+				bindtap="showHideCategoryBox"
+				range="{{categoryList}}" 
+				header-text="货物分类"
+				range-key="name">
+				<text wx:if="{{categoryIndex > 0}}">{{categoryList[categoryIndex].name}}</text>
+				<text wx:else >品名</text>
+				<text class="fa fa-angle-down mg-l-rem3 fs-1rem4 arrow-down-box {{tabTapIndex===1 ? 'rt180deg' : ''}}"></text>
+			</picker>
+			<picker class="fx-g1 {{tabTapIndex===2 ? 'tc-b0' : ''}}" 
+				mode="date" 
+				model:value="{{goodsEndate}}"
+				bindcancel="onEndateChange"
+				bindchange="onEndateChange"
+				bindtap="showHideEndateBox"
+				header-text="有效期至">
+				<text wx:if="{{goodsEndate}}">{{goodsEndate}}</text>
+				<text wx:else >有效期</text>
+				<text class="fa fa-angle-down mg-l-rem3 fs-1rem4 arrow-down-box {{tabTapIndex===2 ? 'rt180deg' : ''}}"></text>
+			</picker>
+			<view class="fx-g1 {{tabTapIndex===3 ? 'tc-b0' : ''}}" bindtap="showHideRangesBox">
+				<text wx:if="{{!searchRanges.length}}">价格区间</text>
+				<text wx:else >¥{{searchRanges[0].minPrice}}...</text>
+				<text class="fa fa-angle-down mg-l-rem3 fs-1rem4 arrow-down-box {{tabTapIndex===3 ? 'rt180deg' : ''}}"></text>
+			</view>
+		</view>
+		<!-- 商品列表 -->
+		<view wx:if="{{!spList}}" class="pd-t-1rem pd-b-2rem ta-c tc-99">
+			<text class="fa fa-circle-o-notch fa-spin"></text>
+			<text class="pd-l-rem3">正在加载...</text>
+		</view>
+		<view wx:elif="{{!spList.length}}" class="pd-tb-1rem ta-c tc-99">暂无商品</view>
+		<view wx:else class="pd-lr-rem5">
+			<view wx:for="{{spList}}" wx:key="spID" 
+				class="pd-1rem br-10 mg-t-rem5 bg-ff tp-dim"
+				bindtap="onItemTap" data-nth="{{index}}">
+				<view class="fx-hc mg-b-1rem">
+					<text class="xianhuo-tips-box">现货</text>
+					<text class="fw-b fx-g1 pd-l-rem5">{{item.goodsCategory}} 单板</text>
+					<text class="tc-99 fa fa-clock-o"></text>
+					<text class="pd-l-rem3">{{item.endDate}}</text>
+				</view>
+				<view class="fx-hc">
+					<text class="tc-66" decode>等&emsp;级：</text>
+					<text class="fx-g1 pd-l-1rem">{{item.goodsName}}</text>
+				</view>
+				<view class="fx-hc">
+					<text class="tc-66" decode>规&emsp;格：</text>
+					<text class="fx-g1 pd-l-1rem">{{item.goodsDesc}}</text>
+				</view>
+				<view class="fx-hc">
+					<text class="tc-66" decode>数&emsp;量：</text>
+					<text class="fx-g1 pd-l-1rem">{{item.goodsNums}} 立方米</text>
+				</view>
+				<view class="fx-hc">
+					<text class="tc-66" decode>单&emsp;价：</text>
+					<text class="pd-l-1rem tc-r0">{{item.unitPrice}}</text>
+					<text class="fx-g1" decode>&nbsp;元/立方米</text>
+				</view>
+				<!--view class="fx-hc">
+					<text class="tc-66">总价：</text>
+					<text class="fx-g1 pd-l-1rem">{{item.totalPrice}} 元</text>
+				</view-->
+				<view class="fx-hc">
+					<text class="tc-66">仓库地：</text>
+					<text class="fx-g1 of-te pd-l-1rem">{{item.spAddress}}</text>
+				</view>
+			</view>
+			<view wx:if="{{spCount < 0}}" class="pd-tb-1rem5 ta-c tc-99">正在加载...</view>
+			<view wx:else class="pd-tb-1rem5 ta-c tc-99">没有更多了~</view>
+		</view>
+	</view>
+</scroll-view>
+
+<!-- 价格区间选择面板 -->
+<qjzj-box 
+	is-show="{{tabTapIndex===3}}" 
+	range-list="{{priceRanges}}" 
+	css-style="top:{{topHeadHeight}}px"
+	bindcancel="showHideRangesBox" 
+	bindconfirm="onPriceSelected"
+></qjzj-box>
